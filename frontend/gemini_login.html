@@ -347,9 +347,233 @@
             font-size: 1.25rem;
         }
 
-        @keyframes fadeOutRight {
-            from { opacity: 1; transform: translateX(0); }
-            to { opacity: 0; transform: translateX(100px); }
+        /* Dashboard Styles */
+        .dashboard {
+            display: none;
+            width: 100%;
+            max-width: 1400px;
+            padding: 2rem;
+            animation: fadeInDown 0.8s ease-out;
+            min-height: 100vh;
+        }
+
+        .dashboard.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            width: fit-content;
+        }
+
+        .tab {
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .tab:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .tab.active {
+            background: var(--accent-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .search-container {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: white;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-container input:focus {
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.875rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            pointer-events: none;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            width: 100%;
+        }
+
+        .product-card {
+            background: var(--secondary-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .product-card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .product-img-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: #fff;
+            position: relative;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 1.5rem;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            background: linear-gradient(180deg, transparent, rgba(0,0,0,0.2));
+        }
+
+        .product-tag {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            width: fit-content;
+            margin-bottom: 0.75rem;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .product-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .variant-selector {
+            margin: 1rem 0;
+        }
+
+        .variant-selector select {
+            width: 100%;
+            padding: 0.6rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: white;
+            font-size: 0.85rem;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .product-price-container {
+            margin-top: auto;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #10b981;
+            text-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+        }
+
+        .price-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .category-title {
+            width: 100%;
+            grid-column: 1 / -1;
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(59, 130, 246, 0.3);
+            background: linear-gradient(to right, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
         }
     </style>
 </head>
@@ -403,6 +627,37 @@
             </form>
         </aside>
     </div>
+
+    <!-- Dashboard -->
+    <main class="dashboard" id="dashboard">
+        <div class="dashboard-header">
+            <div>
+                <h1 class="title">Enterprise Portal</h1>
+                <p class="subtitle" style="margin-bottom: 0;">Access curated premium inventory.</p>
+            </div>
+            
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="productSearch" placeholder="Search products, variants, or categories...">
+            </div>
+
+            <button class="btn btn-secondary" style="width: auto; padding: 0.6rem 1.5rem; margin: 0; border-radius: 12px;" id="logoutBtn">Sign Out</button>
+        </div>
+
+        <div class="category-tabs" id="categoryTabs">
+            <div class="tab active" data-category="all">All Products</div>
+            <div class="tab" data-category="iPhone">iPhone</div>
+            <div class="tab" data-category="iPad">iPad</div>
+            <div class="tab" data-category="Mac">Mac</div>
+            <div class="tab" data-category="Watch">Watch</div>
+            <div class="tab" data-category="Audio">Audio</div>
+            <div class="tab" data-category="Accessory">Accessories</div>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+            <!-- Products will be dynamically injected here -->
+        </div>
+    </main>
 
     <script>
         // Add subtle interactive micro-animations
@@ -475,21 +730,168 @@
             setTimeout(() => {
                 loadingToast.remove();
                 
-                if (email.includes('gemini.corp')) {
-                    showToast('Authentication successful! Redirecting...', 'success');
+                if (email.includes('@')) { // Relaxed validation for testing
+                    showToast('Authentication successful! Loading catalog...', 'success');
                     // Reset after delay
                     setTimeout(() => {
                         loginBtn.textContent = originalText;
                         loginBtn.disabled = false;
                         loginForm.reset();
-                    }, 2000);
+                        
+                        // Switch to dashboard
+                        document.querySelector('.container').style.display = 'none';
+                        document.getElementById('dashboard').classList.add('active');
+                        renderProducts();
+                    }, 1500);
                 } else {
-                    showToast('Invalid corporate email domain.', 'error');
+                    showToast('Please enter a valid email.', 'error');
                     loginBtn.textContent = originalText;
                     loginBtn.disabled = false;
                 }
-            }, 1500);
+            }, 1000);
         });
+
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            document.getElementById('dashboard').classList.remove('active');
+            document.querySelector('.container').style.display = 'flex';
+        });
+
+        const products = [
+            // iPhone 15 Series
+            { brand: "Apple", category: "iPhone", title: "iPhone 15 Pro Max", variants: [{ name: "256GB", price: 159900 }, { name: "512GB", price: 179900 }, { name: "1TB", price: 199900 }], image: "https://images.unsplash.com/photo-1695048065099-35c9118c39e2?w=800&q=80" },
+            { brand: "Apple", category: "iPhone", title: "iPhone 15 Pro", variants: [{ name: "128GB", price: 134900 }, { name: "256GB", price: 144900 }, { name: "512GB", price: 164900 }, { name: "1TB", price: 184900 }], image: "https://images.unsplash.com/photo-1695048065099-35c9118c39e2?w=800&q=80" },
+            { brand: "Apple", category: "iPhone", title: "iPhone 15 Plus", variants: [{ name: "128GB", price: 89900 }, { name: "256GB", price: 99900 }, { name: "512GB", price: 119900 }], image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&q=80" },
+            { brand: "Apple", category: "iPhone", title: "iPhone 15", variants: [{ name: "128GB", price: 79900 }, { name: "256GB", price: 89900 }, { name: "512GB", price: 109900 }], image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&q=80" },
+            
+            // iPhone 14 & 13 Series
+            { brand: "Apple", category: "iPhone", title: "iPhone 14 Plus", variants: [{ name: "128GB", price: 79900 }, { name: "256GB", price: 89900 }, { name: "512GB", price: 109900 }], image: "https://images.unsplash.com/photo-1663465373010-85f1c95155f1?w=800&q=80" },
+            { brand: "Apple", category: "iPhone", title: "iPhone 14", variants: [{ name: "128GB", price: 69900 }, { name: "256GB", price: 79900 }, { name: "512GB", price: 99900 }], image: "https://images.unsplash.com/photo-1663465373010-85f1c95155f1?w=800&q=80" },
+            { brand: "Apple", category: "iPhone", title: "iPhone 13", variants: [{ name: "128GB", price: 59900 }, { name: "256GB", price: 69900 }, { name: "512GB", price: 89900 }], image: "https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=800&q=80" },
+            { brand: "Apple", category: "iPhone", title: "iPhone SE (2022)", variants: [{ name: "64GB", price: 49900 }, { name: "128GB", price: 54900 }, { name: "256GB", price: 64900 }], image: "https://images.unsplash.com/photo-1591337676887-a4b7f05e240b?w=800&q=80" },
+            
+            // iPad Series
+            { brand: "Apple", category: "iPad", title: "iPad Pro 12.9-inch (M2)", variants: [{ name: "128GB", price: 108900 }, { name: "256GB", price: 118900 }, { name: "512GB", price: 138900 }, { name: "1TB", price: 178900 }, { name: "2TB", price: 218900 }], image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&q=80" },
+            { brand: "Apple", category: "iPad", title: "iPad Pro 11-inch (M2)", variants: [{ name: "128GB", price: 81900 }, { name: "256GB", price: 91900 }, { name: "512GB", price: 111900 }, { name: "1TB", price: 151900 }, { name: "2TB", price: 191900 }], image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80" },
+            { brand: "Apple", category: "iPad", title: "iPad Air (5th Gen)", variants: [{ name: "64GB", price: 59900 }, { name: "256GB", price: 74900 }], image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=800&q=80" },
+            { brand: "Apple", category: "iPad", title: "iPad (10th Gen)", variants: [{ name: "64GB", price: 44900 }, { name: "256GB", price: 59900 }], image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&q=80" },
+            { brand: "Apple", category: "iPad", title: "iPad Mini (6th Gen)", variants: [{ name: "64GB", price: 49900 }, { name: "256GB", price: 64900 }], image: "https://images.unsplash.com/photo-1636545281898-349f485db1f9?w=800&q=80" },
+
+            // Mac Series
+            { brand: "Apple", category: "Mac", title: "MacBook Pro 16-inch (M3 Max)", variants: [{ name: "36GB RAM / 1TB", price: 349900 }, { name: "48GB RAM / 1TB", price: 399900 }, { name: "128GB RAM / 8TB", price: 719900 }], image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80" },
+            { brand: "Apple", category: "Mac", title: "MacBook Pro 14-inch (M3 Pro)", variants: [{ name: "18GB RAM / 512GB", price: 199900 }, { name: "36GB RAM / 1TB", price: 239900 }], image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80" },
+            { brand: "Apple", category: "Mac", title: "MacBook Air 15-inch (M3)", variants: [{ name: "8GB / 256GB", price: 134900 }, { name: "16GB / 512GB", price: 154900 }], image: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=800&q=80" },
+            { brand: "Apple", category: "Mac", title: "MacBook Air 13-inch (M3)", variants: [{ name: "8GB / 256GB", price: 114900 }, { name: "16GB / 512GB", price: 134900 }], image: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=800&q=80" },
+            { brand: "Apple", category: "Mac", title: "iMac 24-inch (M3)", variants: [{ name: "8-Core GPU", price: 134900 }, { name: "10-Core GPU", price: 154900 }], image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&q=80" },
+            { brand: "Apple", category: "Mac", title: "Mac Studio (M2 Ultra)", variants: [{ name: "64GB RAM / 1TB", price: 419900 }, { name: "192GB RAM / 8TB", price: 879900 }], image: "https://images.unsplash.com/photo-1618252270966-4e50eb93b1eb?w=800&q=80" },
+            { brand: "Apple", category: "Mac", title: "Mac Mini (M2)", variants: [{ name: "256GB SSD", price: 59900 }, { name: "512GB SSD", price: 79900 }], image: "https://images.unsplash.com/photo-1618252270966-4e50eb93b1eb?w=800&q=80" },
+
+            // Watch Series
+            { brand: "Apple", category: "Watch", title: "Apple Watch Ultra 2", variants: [{ name: "49mm Titanium", price: 89900 }], image: "https://images.unsplash.com/photo-1663248386445-56543bca4ce1?w=800&q=80" },
+            { brand: "Apple", category: "Watch", title: "Apple Watch Series 9", variants: [{ name: "41mm GPS", price: 41900 }, { name: "45mm GPS", price: 44900 }, { name: "45mm Cellular", price: 54900 }], image: "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=800&q=80" },
+            { brand: "Apple", category: "Watch", title: "Apple Watch SE", variants: [{ name: "40mm GPS", price: 29900 }, { name: "44mm GPS", price: 32900 }], image: "https://images.unsplash.com/photo-1544117518-2b0417813c0d?w=800&q=80" },
+
+            // Audio
+            { brand: "Apple", category: "Audio", title: "AirPods Max", variants: [{ name: "Space Grey", price: 59900 }, { name: "Silver", price: 59900 }, { name: "Sky Blue", price: 59900 }], image: "https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=800&q=80" },
+            { brand: "Apple", category: "Audio", title: "AirPods Pro (2nd Gen)", variants: [{ name: "USB-C MagSafe", price: 24900 }], image: "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=800&q=80" },
+            { brand: "Apple", category: "Audio", title: "AirPods (3rd Gen)", variants: [{ name: "Lightning Case", price: 18900 }, { name: "MagSafe Case", price: 19900 }], image: "https://images.unsplash.com/photo-1608156639585-b3a032ef9689?w=800&q=80" },
+            { brand: "Apple", category: "Audio", title: "HomePod (2nd Gen)", variants: [{ name: "Midnight", price: 32900 }, { name: "White", price: 32900 }], image: "https://images.unsplash.com/photo-1616421528643-4a112dfd9d59?w=800&q=80" },
+
+            // Accessories
+            { brand: "Apple", category: "Accessory", title: "Apple Pencil (USB-C)", variants: [{ name: "Standard", price: 7900 }], image: "https://images.unsplash.com/photo-1602498226065-f480306ea64e?w=800&q=80" },
+            { brand: "Apple", category: "Accessory", title: "Apple Pencil (2nd Gen)", variants: [{ name: "Standard", price: 11900 }], image: "https://images.unsplash.com/photo-1602498226065-f480306ea64e?w=800&q=80" },
+            { brand: "Apple", category: "Accessory", title: "Magic Mouse", variants: [{ name: "White", price: 7500 }, { name: "Black", price: 9500 }], image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=800&q=80" },
+            { brand: "Apple", category: "Accessory", title: "Magic Keyboard (iPad Pro)", variants: [{ name: "11-inch", price: 29900 }, { name: "12.9-inch", price: 33900 }], image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&q=80" },
+            { brand: "Apple", category: "Accessory", title: "AirTag", variants: [{ name: "1-Pack", price: 3490 }, { name: "4-Pack", price: 11900 }], image: "https://images.unsplash.com/photo-1623863749449-3652db6e3557?w=800&q=80" }
+        ];
+
+        let currentFilter = 'all';
+
+        function formatPrice(price) {
+            return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(price);
+        }
+
+        function renderProducts(searchQuery = '') {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+            
+            const searchTerm = searchQuery.toLowerCase();
+            const filteredProducts = products.filter(p => {
+                const matchesSearch = p.title.toLowerCase().includes(searchTerm) || 
+                                    p.category.toLowerCase().includes(searchTerm) ||
+                                    p.brand.toLowerCase().includes(searchTerm);
+                const matchesCategory = currentFilter === 'all' || p.category === currentFilter;
+                return matchesSearch && matchesCategory;
+            });
+
+            if (filteredProducts.length === 0) {
+                grid.innerHTML = '<div class="no-results">No products found matching your criteria.</div>';
+                return;
+            }
+
+            let lastCategory = '';
+
+            filteredProducts.forEach((product, index) => {
+                // Only show category headers if we are in 'all' view
+                if (currentFilter === 'all' && product.category !== lastCategory) {
+                    const header = document.createElement('h2');
+                    header.className = 'category-title';
+                    header.textContent = `${product.category}`;
+                    grid.appendChild(header);
+                    lastCategory = product.category;
+                }
+
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                
+                // Staggered animation
+                setTimeout(() => card.classList.add('show'), index * 30);
+
+                const productId = `prod-${index}`;
+                
+                card.innerHTML = `
+                    <div class="product-img-container">
+                        <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-tag">${product.brand}</div>
+                        <h3 class="product-title">${product.title}</h3>
+                        
+                        <div class="variant-selector">
+                            <label style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem; display: block;">Select Variant</label>
+                            <select onchange="updatePrice('${productId}', this.value)">
+                                ${product.variants.map((v, i) => `<option value="${v.price}">${v.name}</option>`).join('')}
+                            </select>
+                        </div>
+
+                        <div class="product-price-container">
+                            <span class="product-price" id="price-${productId}">${formatPrice(product.variants[0].price)}</span>
+                            <span class="price-label">Excl. Tax</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function updatePrice(id, price) {
+            document.getElementById(`price-${id}`).textContent = formatPrice(price);
+        }
+
+        // Search logic
+        document.getElementById('productSearch').addEventListener('input', (e) => {
+            renderProducts(e.target.value);
+        });
+
+        // Tab logic
+        document.getElementById('categoryTabs').addEventListener('click', (e) => {
+            if (e.target.classList.contains('tab')) {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                e.target.classList.add('active');
+                currentFilter = e.target.dataset.category;
+                renderProducts(document.getElementById('productSearch').value);
+            }
+        });
+
 
         // Register Form Handler
         const registerForm = document.getElementById('registerForm');

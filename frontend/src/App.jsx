@@ -5,215 +5,154 @@ import Login from './Login';
 const dummyProducts = [
   { 
     id: 1, 
-    name: 'WH-1000XM4 Wireless Noise Cancelling', 
-    brand: 'SONY',
-    price: 299.99, 
-    originalPrice: 349.99,
-    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1600&q=90', 
-    category: 'Electronics',
-    rating: 4.8,
-    reviews: '12,450',
-    description: 'Industry-leading noise cancellation technology means you hear every word, note, and tune with incredible clarity.',
-    features: ['Dual Noise Sensor', '30-hour battery', 'Speak-to-chat'],
-    sizes: ['One Size'],
-    colors: ['Black', 'Silver', 'Midnight Blue'],
+    name: 'iPhone 15 Pro Max', 
+    brand: 'APPLE',
+    price: 159900, 
+    originalPrice: 169900,
+    image: 'https://images.unsplash.com/photo-1695048065099-35c9118c39e2?w=1600&q=90', 
+    category: 'iPhone',
+    rating: 4.9,
+    reviews: '25,450',
+    description: 'The ultimate iPhone. With the A17 Pro chip, a customizable Action button, and the most powerful iPhone camera system ever.',
+    features: ['Titanium design', 'A17 Pro chip', '5x Telephoto camera'],
+    sizes: ['256GB', '512GB', '1TB'],
+    sizePricing: { '256GB': 159900, '512GB': 179900, '1TB': 199900 },
+    colors: ['Natural Titanium', 'Blue Titanium', 'White Titanium', 'Black Titanium'],
     colorMap: {
-      'Black': '#111827',
-      'Silver': '#d1d5db',
-      'Midnight Blue': '#1e3a8a'
+      'Natural Titanium': '#8e8a84',
+      'Blue Titanium': '#444d5a',
+      'White Titanium': '#f2f1ed',
+      'Black Titanium': '#464646'
     },
     variantData: {
-      'Black': {
-        main: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1600&q=90',
-        gallery: ['https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&q=80']
-      },
-      'Silver': {
-        main: 'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=1600&q=90',
-        gallery: ['https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400&q=80']
-      },
-      'Midnight Blue': {
-        main: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=1600&q=90',
-        gallery: ['https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80']
+      'Natural Titanium': {
+        main: 'https://images.unsplash.com/photo-1695048065099-35c9118c39e2?w=1600&q=90',
+        gallery: ['https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&q=80']
       }
     },
-    sku: 'SNY-WH-BK',
-    tags: ['Audio', 'ANC'],
-    additionalInfo: 'Weight: 254g'
+    sku: 'APL-I15-PM',
+    tags: ['iOS', 'Flagship'],
+    additionalInfo: 'USB-C Charging'
   },
   { 
     id: 2, 
-    name: 'Apple Watch Series 7 GPS', 
+    name: 'MacBook Pro 16-inch M3 Max', 
     brand: 'APPLE',
-    price: 399.00, 
-    originalPrice: 429.00,
-    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1600&q=90', 
-    category: 'Accessories',
+    price: 349900, 
+    originalPrice: 369900,
+    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1600&q=90', 
+    category: 'Mac',
     rating: 4.9,
     reviews: '8,200',
-    description: 'Always-On Retina display has nearly 20% more screen area than Series 6.',
-    features: ['Retina Display', 'ECG App', 'Swimproof'],
-    sizes: ['41mm', '45mm'],
-    colors: ['Midnight', 'Starlight', 'Red'],
+    description: 'The most advanced chips ever built for a personal computer. M3, M3 Pro, and M3 Max chips deliver extreme performance.',
+    features: ['Liquid Retina XDR', 'Up to 22h battery', 'MagSafe 3'],
+    sizes: ['1TB SSD', '2TB SSD', '4TB SSD'],
+    sizePricing: { '1TB SSD': 349900, '2TB SSD': 389900, '4TB SSD': 449900 },
+    colors: ['Space Black', 'Silver'],
     colorMap: {
-      'Midnight': '#0f172a',
-      'Starlight': '#f1f5f9',
-      'Red': '#ef4444'
+      'Space Black': '#1c1c1c',
+      'Silver': '#d1d5db'
     },
-    variantData: {
-      'Midnight': {
-        main: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1600&q=90',
-        gallery: ['https://images.unsplash.com/photo-1508685096489-7df30e13b390?w=400&q=80']
-      },
-      'Starlight': {
-        main: 'https://images.unsplash.com/photo-1508685096489-7df30e13b390?w=1600&q=90',
-        gallery: ['https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80']
-      },
-      'Red': {
-        main: 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=1600&q=90',
-        gallery: ['https://images.unsplash.com/photo-1508685096489-7df30e13b390?w=400&q=80']
-      }
-    },
-    sku: 'APL-WCH-7',
-    tags: ['Tech', 'Health'],
-    additionalInfo: 'Battery: 18h'
+    sku: 'APL-MBP-16',
+    tags: ['Laptop', 'Workstation'],
+    additionalInfo: 'ProMotion technology'
   },
   { 
     id: 3, 
-    name: 'MX Mechanical Tactile Wireless', 
-    brand: 'LOGITECH',
-    price: 169.99, 
-    originalPrice: 199.99,
-    image: 'https://images.unsplash.com/photo-1585506942812-e72e4d2847be?w=1600&q=90', 
-    category: 'Computing',
+    name: 'iPad Pro 12.9-inch M2', 
+    brand: 'APPLE',
+    price: 108900, 
+    originalPrice: 112900,
+    image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=1600&q=90', 
+    category: 'iPad',
     rating: 4.8,
-    reviews: '5,100',
-    description: 'Low-profile mechanical switches deliver next-level typing feel.',
-    features: ['Mechanical Switches', 'Backlit', 'Logi Bolt'],
-    sizes: ['Compact', 'Full'],
-    colors: ['Graphite', 'Pale Grey'],
+    reviews: '12,100',
+    description: 'Astonishing performance. Incredibly advanced displays. Superfast wireless connectivity. Next-level Apple Pencil capabilities.',
+    features: ['M2 Chip', 'Liquid Retina XDR', 'Wi-Fi 6E'],
+    sizes: ['128GB', '256GB', '512GB', '1TB', '2TB'],
+    sizePricing: { '128GB': 108900, '256GB': 118900, '512GB': 138900, '1TB': 178900, '2TB': 218900 },
+    colors: ['Space Grey', 'Silver'],
     colorMap: {
-      'Graphite': '#374151',
-      'Pale Grey': '#f3f4f6'
+      'Space Grey': '#535353',
+      'Silver': '#d1d5db'
     },
-    variantData: {
-      'Graphite': {
-        main: 'https://images.unsplash.com/photo-1585506942812-e72e4d2847be?w=1600&q=90',
-        gallery: ['https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=400&q=80']
-      },
-      'Pale Grey': {
-        main: 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=1600&q=90',
-        gallery: ['https://images.unsplash.com/photo-1585506942812-e72e4d2847be?w=400&q=80']
-      }
-    },
-    sku: 'LOG-MX-MCH',
-    tags: ['Office', 'Tech'],
-    additionalInfo: 'Charge: USB-C'
+    sku: 'APL-IPD-PRO',
+    tags: ['Tablet', 'Pro'],
+    additionalInfo: 'Face ID'
   },
   { 
     id: 4, 
-    name: 'Aviator Classic Polarized', 
-    brand: 'RAY-BAN',
-    price: 159.00, 
-    originalPrice: 210.00,
-    image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=1600&q=90', 
-    category: 'Fashion',
-    rating: 4.7,
-    reviews: '3,200',
-    description: 'Classic aviator frames with G-15 polarized lenses.',
-    features: ['Polarized', 'UV Protection', 'Metal Frame'],
-    sizes: ['Standard', 'Wide'],
-    colors: ['Gold/Black', 'Silver/Blue', 'Gunmetal'],
+    name: 'Apple Watch Ultra 2', 
+    brand: 'APPLE',
+    price: 89900, 
+    originalPrice: 94900,
+    image: 'https://images.unsplash.com/photo-1663248386445-56543bca4ce1?w=1600&q=90', 
+    category: 'Watch',
+    rating: 4.9,
+    reviews: '5,400',
+    description: 'The most rugged and capable Apple Watch. Designed for the demands of endurance athletes, outdoor adventurers, and water sports enthusiasts.',
+    features: ['Titanium case', 'Up to 36h battery', 'S9 SiP'],
+    sizes: ['49mm'],
+    sizePricing: { '49mm': 89900 },
+    colors: ['Natural Titanium'],
     colorMap: {
-      'Gold/Black': '#000000',
-      'Silver/Blue': '#1e3a8a',
-      'Gunmetal': '#4b5563'
+      'Natural Titanium': '#c5c5c5'
     },
-    variantData: {
-      'Gold/Black': {
-        main: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=1600&q=90',
-        gallery: ['https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=400&q=80']
-      },
-      'Silver/Blue': {
-        main: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=1600&q=90',
-        gallery: ['https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&q=80']
-      },
-      'Gunmetal': {
-        main: 'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=1600&q=90',
-        gallery: ['https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&q=80']
-      }
-    },
-    sku: 'RB-AV-POL',
-    tags: ['Fashion', 'Summer'],
-    additionalInfo: 'Material: Metal'
+    sku: 'APL-WCH-U2',
+    tags: ['Sport', 'Rugged'],
+    additionalInfo: 'Water resistant 100m'
   },
   { 
     id: 5, 
-    name: 'Nest Audio Smart Home', 
-    brand: 'GOOGLE',
-    price: 89.99, 
-    originalPrice: 119.00,
-    image: 'https://images.unsplash.com/photo-1543512214-318c7553f230?w=1600&q=90', 
-    category: 'Electronics',
-    rating: 4.6,
+    name: 'AirPods Max', 
+    brand: 'APPLE',
+    price: 59900, 
+    originalPrice: 64900,
+    image: 'https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=1600&q=90', 
+    category: 'Audio',
+    rating: 4.7,
     reviews: '15,000',
-    description: 'Meet Nest Audio. Hear music the way it should sound, with crisp vocals and powerful bass.',
-    features: ['Google Assistant', 'Stereo Pair', 'Smart Home Control'],
+    description: 'AirPods Max reimagine over-ear headphones. An Apple-designed dynamic driver provides immersive high-fidelity audio.',
+    features: ['Active Noise Cancellation', 'Transparency mode', 'Spatial audio'],
     sizes: ['Standard'],
-    colors: ['Chalk', 'Charcoal', 'Sky'],
+    sizePricing: { 'Standard': 59900 },
+    colors: ['Space Grey', 'Silver', 'Sky Blue', 'Pink', 'Green'],
     colorMap: {
-      'Chalk': '#f8fafc',
-      'Charcoal': '#1f2937',
-      'Sky': '#bae6fd'
+      'Space Grey': '#374151',
+      'Silver': '#d1d5db',
+      'Sky Blue': '#93c5fd',
+      'Pink': '#f9a8d4',
+      'Green': '#86efac'
     },
-    variantData: {
-      'Chalk': {
-        main: 'https://images.unsplash.com/photo-1543512214-318c7553f230?w=1600&q=90',
-        gallery: ['https://images.unsplash.com/photo-1518444065439-e933c06ce9cd?w=400&q=80']
-      },
-      'Charcoal': {
-        main: 'https://images.unsplash.com/photo-1518444065439-e933c06ce9cd?w=1600&q=90',
-        gallery: ['https://images.unsplash.com/photo-1543512214-318c7553f230?w=400&q=80']
-      },
-      'Sky': {
-        main: 'https://images.unsplash.com/photo-1589492477829-5e65395b66cc?w=1600&q=90',
-        gallery: ['https://images.unsplash.com/photo-1543512214-318c7553f230?w=400&q=80']
-      }
-    },
-    sku: 'GOOG-NST-AU',
-    tags: ['Speaker', 'Smart Home'],
-    additionalInfo: 'Drivers: 75mm woofer'
+    sku: 'APL-APD-MAX',
+    tags: ['Audio', 'ANC'],
+    additionalInfo: '20 hours battery'
   },
   { 
     id: 6, 
-    name: 'Leather Messenger Business', 
-    brand: 'FOSSIL',
-    price: 145.00, 
-    originalPrice: 195.00,
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=1600&q=90', 
-    category: 'Fashion',
+    name: 'iPhone 15', 
+    brand: 'APPLE',
+    price: 79900, 
+    originalPrice: 84900,
+    image: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=1600&q=90', 
+    category: 'iPhone',
     rating: 4.8,
-    reviews: '2,400',
-    description: 'Stay organized with a bag that’s as professional as you are.',
-    features: ['Genuine Leather', 'Laptop Sleeve', 'Brass Hardware'],
-    sizes: ['Medium', 'Large'],
-    colors: ['Cognac', 'Black'],
+    reviews: '45,000',
+    description: 'Dynamic Island comes to iPhone 15. The innovative design features back glass that has color infused throughout the material.',
+    features: ['Dynamic Island', '48MP Main camera', 'A16 Bionic'],
+    sizes: ['128GB', '256GB', '512GB'],
+    sizePricing: { '128GB': 79900, '256GB': 89900, '512GB': 109900 },
+    colors: ['Pink', 'Yellow', 'Green', 'Blue', 'Black'],
     colorMap: {
-      'Cognac': '#78350f',
+      'Pink': '#f9a8d4',
+      'Yellow': '#fde047',
+      'Green': '#86efac',
+      'Blue': '#93c5fd',
       'Black': '#000000'
     },
-    variantData: {
-      'Cognac': {
-        main: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=1600&q=90',
-        gallery: ['https://images.unsplash.com/photo-1547949003-9792a18a2601?w=400&q=80']
-      },
-      'Black': {
-        main: 'https://images.unsplash.com/photo-1547949003-9792a18a2601?w=1600&q=90',
-        gallery: ['https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80']
-      }
-    },
-    sku: 'FOS-BAG-LTHR',
-    tags: ['Bag', 'Business'],
-    additionalInfo: 'Material: Leather'
+    sku: 'APL-I15-STD',
+    tags: ['iOS', 'Standard'],
+    additionalInfo: 'Ceramic Shield front'
   }
 ];
 
@@ -229,6 +168,7 @@ function App() {
   const [activeTab, setActiveTab] = useState('description');
   const [view, setView] = useState('store'); // 'store' or 'cart'
   const [checkoutStep, setCheckoutStep] = useState(1); // 1: Bag, 2: Checkout, 3: Confirmation
+  const [activeViewCategory, setActiveViewCategory] = useState('all');
   const [theme, setTheme] = useState('dark');
 
   const toggleTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'light');
@@ -290,6 +230,7 @@ function App() {
     } else {
       setCart([...cart, {
         ...product,
+        price: product.sizePricing?.[finalSize] || product.price,
         image: finalImage,
         cartId: Date.now(),
         selectedSize: finalSize,
@@ -315,12 +256,13 @@ function App() {
 
   const subtotal = cart.reduce((total, item) => total + (item.price * (item.qty || 1)), 0);
   const gst = subtotal * 0.12;
-  const shipping = 5.00;
+  const shipping = subtotal > 0 ? 99 : 0;
   const total = subtotal + gst + shipping;
 
   const renderStore = () => {
-    // Filter and Sort Logic (Basic for demo)
-    const filteredProducts = dummyProducts;
+    const filteredProducts = activeViewCategory === 'all' 
+      ? dummyProducts 
+      : dummyProducts.filter(p => p.category === activeViewCategory);
 
     return (
       <main className="main-content store-view">
@@ -339,20 +281,19 @@ function App() {
             <div className="filter-section">
               <h4>CATEGORIES</h4>
               <div className="filter-options">
-                <label><input type="checkbox" defaultChecked /> Electronics <span>(2)</span></label>
-                <label><input type="checkbox" defaultChecked /> Fashion <span>(2)</span></label>
-                <label><input type="checkbox" defaultChecked /> Accessories <span>(1)</span></label>
-                <label><input type="checkbox" defaultChecked /> Computing <span>(1)</span></label>
+                <label onClick={() => setActiveViewCategory('all')}><input type="radio" name="cat" checked={activeViewCategory === 'all'} readOnly /> All Products</label>
+                <label onClick={() => setActiveViewCategory('iPhone')}><input type="radio" name="cat" checked={activeViewCategory === 'iPhone'} readOnly /> iPhone</label>
+                <label onClick={() => setActiveViewCategory('Mac')}><input type="radio" name="cat" checked={activeViewCategory === 'Mac'} readOnly /> Mac</label>
+                <label onClick={() => setActiveViewCategory('iPad')}><input type="radio" name="cat" checked={activeViewCategory === 'iPad'} readOnly /> iPad</label>
+                <label onClick={() => setActiveViewCategory('Watch')}><input type="radio" name="cat" checked={activeViewCategory === 'Watch'} readOnly /> Watch</label>
+                <label onClick={() => setActiveViewCategory('Audio')}><input type="radio" name="cat" checked={activeViewCategory === 'Audio'} readOnly /> Audio</label>
               </div>
             </div>
 
             <div className="filter-section">
               <h4>BRAND</h4>
               <div className="filter-options">
-                <label><input type="checkbox" /> SONY</label>
-                <label><input type="checkbox" /> APPLE</label>
-                <label><input type="checkbox" /> RAY-BAN</label>
-                <label><input type="checkbox" /> FOSSIL</label>
+                <label><input type="checkbox" defaultChecked /> APPLE</label>
               </div>
             </div>
 
@@ -409,10 +350,10 @@ function App() {
                     <h4 className="brand-name">{product.brand}</h4>
                     <h3 className="product-title">{product.name}</h3>
                     <div className="price-row">
-                      <span className="current-price">${product.price.toFixed(2)}</span>
+                      <span className="current-price">₹{product.price.toLocaleString('en-IN')}</span>
                       {product.originalPrice && (
                         <>
-                          <span className="original-price">${product.originalPrice.toFixed(2)}</span>
+                          <span className="original-price">₹{product.originalPrice.toLocaleString('en-IN')}</span>
                           <span className="discount-tag">({Math.round((1 - product.price/product.originalPrice) * 100)}% OFF)</span>
                         </>
                       )}
@@ -496,7 +437,7 @@ function App() {
                             </div>
                           </div>
                         </td>
-                        <td>${item.price.toFixed(2)}</td>
+                        <td>₹{item.price.toLocaleString('en-IN')}</td>
                         <td>
                           <div className="qty-picker">
                             <button onClick={() => updateCartItemQty(item.cartId, (item.qty || 1) - 1)}>-</button>
@@ -504,7 +445,7 @@ function App() {
                             <button onClick={() => updateCartItemQty(item.cartId, (item.qty || 1) + 1)}>+</button>
                           </div>
                         </td>
-                        <td>${(item.price * (item.qty || 1)).toFixed(2)}</td>
+                        <td>₹{(item.price * (item.qty || 1)).toLocaleString('en-IN')}</td>
                         <td>
                           <button className="remove-row" onClick={() => removeFromCart(item.cartId)}>&times;</button>
                         </td>
@@ -528,23 +469,23 @@ function App() {
                   <h3>CART TOTALS</h3>
                   <div className="summary-row">
                     <span>SUBTOTAL</span>
-                    <span>${subtotal.toFixed(2)}</span>
+                    <span>₹{subtotal.toLocaleString('en-IN')}</span>
                   </div>
                   <div className="summary-row">
                     <span>GST (12%)</span>
-                    <span>${gst.toFixed(2)}</span>
+                    <span>₹{gst.toLocaleString('en-IN')}</span>
                   </div>
                   <div className="summary-row">
                     <span>SHIPPING</span>
                     <div className="shipping-info">
-                      <p>Flat rate: ${shipping.toFixed(2)}</p>
+                      <p>Flat rate: ₹{shipping.toLocaleString('en-IN')}</p>
                       <p>Shipping to India</p>
                       <button>CHANGE ADDRESS</button>
                     </div>
                   </div>
                   <div className="summary-row total">
                     <span>TOTAL</span>
-                    <span>${total.toFixed(2)}</span>
+                    <span>₹{total.toLocaleString('en-IN')}</span>
                   </div>
                   <button className="checkout-btn-large" onClick={() => setCheckoutStep(2)} disabled={cart.length === 0}>
                     PROCEED TO CHECKOUT
@@ -656,7 +597,7 @@ function App() {
                     {cart.map(item => (
                       <div key={item.cartId} className="order-item">
                         <span>{item.name} x {item.qty || 1}</span>
-                        <span>${(item.price * (item.qty || 1)).toFixed(2)}</span>
+                        <span>₹{(item.price * (item.qty || 1)).toLocaleString('en-IN')}</span>
                       </div>
                     ))}
                   </div>
@@ -666,15 +607,15 @@ function App() {
                   </div>
                   <div className="order-row">
                     <span>GST (12%)</span>
-                    <span>${gst.toFixed(2)}</span>
+                    <span>₹{gst.toLocaleString('en-IN')}</span>
                   </div>
                   <div className="order-row">
                     <span>SHIPPING</span>
-                    <span>Flat rate: ${shipping.toFixed(2)}</span>
+                    <span>Flat rate: ₹{shipping.toLocaleString('en-IN')}</span>
                   </div>
                   <div className="order-row total">
                     <span>TOTAL</span>
-                    <span>${total.toFixed(2)}</span>
+                    <span>₹{total.toLocaleString('en-IN')}</span>
                   </div>
                   <div className="payment-methods">
                     <div className="method">
@@ -789,7 +730,7 @@ function App() {
                   </div>
                   <span className="review-count">{selectedProduct.reviews} reviews</span>
                 </div>
-                <p className="modal-price">${selectedProduct.price.toFixed(2)}</p>
+                <p className="modal-price">₹{(selectedProduct.sizePricing?.[selectedSize] || selectedProduct.price).toLocaleString('en-IN')}</p>
                 <p className="modal-description-short">{selectedProduct.description.substring(0, 120)}...</p>
                 
                 <div className="selection-group">
@@ -863,7 +804,15 @@ function App() {
                 <button className={activeTab === 'reviews' ? 'active' : ''} onClick={() => setActiveTab('reviews')}>REVIEWS (2)</button>
               </div>
               <div className="tab-content">
-                {activeTab === 'description' && <p>{selectedProduct.description}</p>}
+                {activeTab === 'description' && (
+                  <div>
+                    <p style={{marginBottom: '1rem'}}>{selectedProduct.description}</p>
+                    <h4 style={{fontSize: '0.9rem', marginBottom: '0.5rem', color: 'var(--text-primary)'}}>Key Features:</h4>
+                    <ul style={{listStyleType: 'disc', paddingLeft: '20px', color: 'var(--text-secondary)'}}>
+                      {selectedProduct.features?.map((f, i) => <li key={i} style={{marginBottom: '5px'}}>{f}</li>)}
+                    </ul>
+                  </div>
+                )}
                 {activeTab === 'additional' && <p>{selectedProduct.additionalInfo}</p>}
                 {activeTab === 'reviews' && (
                   <div className="reviews-placeholder">
@@ -893,7 +842,7 @@ function App() {
                 <img src={item.image} alt={item.name} />
                 <div className="item-details">
                   <h4>{item.name}</h4>
-                  <p>${item.price.toFixed(2)}</p>
+                  <p>₹{item.price.toLocaleString('en-IN')}</p>
                 </div>
                 <button className="remove-item" onClick={() => removeFromCart(item.cartId)}>&times;</button>
               </div>
@@ -903,7 +852,7 @@ function App() {
         <div className="cart-footer">
           <div className="total-row">
             <span>Total</span>
-            <span>${subtotal.toFixed(2)}</span>
+            <span>₹{subtotal.toLocaleString('en-IN')}</span>
           </div>
           <button className="checkout-btn" onClick={() => { setView('cart'); setIsCartOpen(false); }}>
             View Full Cart
