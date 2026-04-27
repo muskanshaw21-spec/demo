@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
 :root {
+  /* Dark Mode (Default) */
   --bg-color: #0f172a;
   --card-bg: rgba(30, 41, 59, 0.7);
   --text-primary: #f8fafc;
@@ -9,6 +10,25 @@
   --accent-hover: #2563eb;
   --border-color: rgba(255, 255, 255, 0.1);
   --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  
+  --bg-img: radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+            radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+            radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+}
+
+[data-theme='light'] {
+  --bg-color: #f1f5f9;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --accent-color: #2563eb;
+  --accent-hover: #1d4ed8;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  
+  --bg-img: radial-gradient(at 0% 0%, hsla(210, 40%, 98%, 1) 0, transparent 50%), 
+            radial-gradient(at 50% 0%, hsla(220, 30%, 94%, 1) 0, transparent 50%), 
+            radial-gradient(at 100% 0%, hsla(200, 20%, 98%, 1) 0, transparent 50%);
 }
 
 * {
@@ -20,13 +40,11 @@
 body {
   font-family: 'Outfit', sans-serif;
   background-color: var(--bg-color);
-  background-image: 
-    radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
-    radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
-    radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+  background-image: var(--bg-img);
   background-attachment: fixed;
   color: var(--text-primary);
   min-height: 100vh;
+  transition: background-color 0.4s ease, color 0.4s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Login.css';
 
 export default function Login({ onLogin }) {
@@ -16,6 +16,10 @@ export default function Login({ onLogin }) {
   const toggleTheme = () => {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   const validateForm = () => {
     let isValid = true;
@@ -76,8 +80,8 @@ export default function Login({ onLogin }) {
 
   return (
     <div className={`login-page ${theme === 'light' ? 'light-mode' : ''}`}>
-      <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle Theme">
-        {theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}
+      <button className="theme-toggle-login" onClick={toggleTheme} aria-label="Toggle Theme">
+        {theme === 'dark' ? '☀️' : '🌙'}
       </button>
 
       <header className="header">

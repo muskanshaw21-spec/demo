@@ -1,17 +1,6 @@
 .login-page {
-    --primary-bg: #0b0f19;
-    --secondary-bg: rgba(255, 255, 255, 0.03);
-    --accent-color: #3b82f6;
-    --accent-hover: #2563eb;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-
-    background-color: var(--primary-bg);
-    background-image: 
-        radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+    background-color: var(--bg-color);
+    background-image: var(--bg-img);
     color: var(--text-primary);
     min-height: 100vh;
     display: flex;
@@ -27,20 +16,7 @@
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-.login-page.light-mode {
-    --primary-bg: #f8fafc;
-    --secondary-bg: rgba(255, 255, 255, 0.7);
-    --accent-color: #2563eb;
-    --accent-hover: #1d4ed8;
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --glass-border: rgba(0, 0, 0, 0.1);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-
-    background-image: 
-        radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
-}
+/* Global [data-theme] handles variables */
 
 .login-page * {
     font-family: 'Inter', sans-serif;
@@ -95,7 +71,7 @@
     background: var(--secondary-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--glass-border);
+    border: 1px solid var(--border-color);
     border-radius: 20px;
     padding: 2.5rem;
     box-shadow: var(--glass-shadow);
@@ -160,8 +136,8 @@
 .login-page .input-group input {
     width: 100%;
     padding: 0.875rem 1rem;
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--glass-border);
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     color: var(--text-primary);
     font-size: 1rem;
@@ -206,14 +182,14 @@
 
 .login-page .btn-secondary {
     background: transparent;
-    border: 1px solid var(--glass-border);
+    border: 1px solid var(--border-color);
     color: var(--text-primary);
     margin-top: 1rem;
 }
 
 .login-page .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: var(--card-bg);
+    border-color: var(--border-color);
 }
 
 .login-page .forgot-password {
@@ -233,25 +209,29 @@
 }
 
 /* Theme Toggle */
-.login-page .theme-toggle {
+.theme-toggle-login {
     position: absolute;
     top: 2rem;
     right: 2rem;
-    background: var(--secondary-bg);
-    border: 1px solid var(--glass-border);
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
     color: var(--text-primary);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.875rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
     cursor: pointer;
-    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
     transition: all 0.3s ease;
-    z-index: 10;
+    z-index: 1100;
+    box-shadow: var(--glass-shadow);
 }
 
-.login-page .theme-toggle:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.theme-toggle-login:hover {
+    transform: scale(1.1) rotate(15deg);
+    background: var(--border-color);
 }
 
 /* Form Errors */
