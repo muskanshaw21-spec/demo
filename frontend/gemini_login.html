@@ -575,6 +575,422 @@
             color: var(--text-secondary);
             font-size: 1.2rem;
         }
+
+        /* Add to Cart & Product Detail Styles */
+        .cart-btn {
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .cart-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-color);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--accent-color);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .view-detail-btn {
+            margin-top: 0.5rem;
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
+        }
+
+        .view-detail-btn:hover {
+            border-color: white;
+            color: white;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #0f172a;
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            padding: 3rem;
+            animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes modalPop {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .close-modal:hover {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+
+        /* Detail Page Layout */
+        .product-detail-container {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .detail-image {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: fit-content;
+        }
+
+        .detail-image img {
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+        }
+
+        .detail-info {
+            flex: 1.2;
+            min-width: 300px;
+        }
+
+        .detail-info .product-tag {
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-info .product-title {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        /* Cart List */
+        .cart-items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 12px;
+            padding: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .cart-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-info h4 {
+            margin-bottom: 0.25rem;
+        }
+
+        .cart-item-info p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .cart-item-qty {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+        }
+
+        .qty-btn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .qty-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .cart-total {
+            margin-top: 2rem;
+            text-align: right;
+            border-top: 1px solid var(--glass-border);
+            padding-top: 1.5rem;
+        }
+
+        .cart-total h3 {
+            font-size: 1.5rem;
+            color: #10b981;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--accent-color), #8b5cf6);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            margin-top: 2rem;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        /* Pagination Styles */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .pagination-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pagination-btn:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .page-info {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Improved Product Detail Modal Styles */
+        .detail-tabs {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-tab {
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding-bottom: 0.5rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .detail-tab.active {
+            color: var(--accent-color);
+        }
+
+        .detail-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        .detail-tab-content {
+            margin-top: 1.5rem;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .detail-tab-content.active {
+            display: block;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .spec-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .spec-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .spec-value {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .qty-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            width: fit-content;
+            margin-top: 1rem;
+        }
+
+        .highlights {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: #10b981;
+        }
     </style>
 </head>
 <body>
@@ -641,6 +1057,11 @@
                 <input type="text" id="productSearch" placeholder="Search products, variants, or categories...">
             </div>
 
+            <div class="cart-btn" id="cartBtn" onclick="toggleCart()">
+                <span>🛒</span>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </div>
+
             <button class="btn btn-secondary" style="width: auto; padding: 0.6rem 1.5rem; margin: 0; border-radius: 12px;" id="logoutBtn">Sign Out</button>
         </div>
 
@@ -657,9 +1078,66 @@
         <div class="product-grid" id="productGrid">
             <!-- Products will be dynamically injected here -->
         </div>
+
+        <div class="pagination" id="paginationControls">
+            <!-- Pagination will be injected here -->
+        </div>
     </main>
 
     <script>
+        const products = [
+            // iPhone 15 Series
+            { brand: "Apple", category: "iPhone", title: "iPhone 15 Pro Max", variants: [{ name: "256GB", price: 159900 }, { name: "512GB", price: 179900 }, { name: "1TB", price: 199900 }], image: "https://images.unsplash.com/photo-1695048065099-35c9118c39e2?w=800&q=80" },
+            { brand: "Apple", category: "iPhone", title: "iPhone 15 Pro", variants: [{ name: "128GB", price: 134900 }, { name: "256GB", price: 144900 }, { name: "512GB", price: 164900 }, { name: "1TB", price: 184900 }], image: "https://images.unsplash.com/photo-1695048065099-35c9118c39e2?w=800&q=80" },
+            { brand: "Apple", category: "iPhone", title: "iPhone 15 Plus", variants: [{ name: "128GB", price: 89900 }, { name: "256GB", price: 99900 }, { name: "512GB", price: 119900 }], image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&q=80" },
+            { brand: "Apple", category: "iPhone", title: "iPhone 15", variants: [{ name: "128GB", price: 79900 }, { name: "256GB", price: 89900 }, { name: "512GB", price: 109900 }], image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&q=80" },
+            
+            // iPhone 14 & 13 Series
+            { brand: "Apple", category: "iPhone", title: "iPhone 14 Plus", variants: [{ name: "128GB", price: 79900 }, { name: "256GB", price: 89900 }, { name: "512GB", price: 109900 }], image: "https://images.unsplash.com/photo-1663465373010-85f1c95155f1?w=800&q=80" },
+            { brand: "Apple", category: "iPhone", title: "iPhone 14", variants: [{ name: "128GB", price: 69900 }, { name: "256GB", price: 79900 }, { name: "512GB", price: 99900 }], image: "https://images.unsplash.com/photo-1663465373010-85f1c95155f1?w=800&q=80" },
+            { brand: "Apple", category: "iPhone", title: "iPhone 13", variants: [{ name: "128GB", price: 59900 }, { name: "256GB", price: 69900 }, { name: "512GB", price: 89900 }], image: "https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=800&q=80" },
+            { brand: "Apple", category: "iPhone", title: "iPhone SE (2022)", variants: [{ name: "64GB", price: 49900 }, { name: "128GB", price: 54900 }, { name: "256GB", price: 64900 }], image: "https://images.unsplash.com/photo-1591337676887-a4b7f05e240b?w=800&q=80" },
+            
+            // iPad Series
+            { brand: "Apple", category: "iPad", title: "iPad Pro 12.9-inch (M2)", variants: [{ name: "128GB", price: 108900 }, { name: "256GB", price: 118900 }, { name: "512GB", price: 138900 }, { name: "1TB", price: 178900 }, { name: "2TB", price: 218900 }], image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&q=80" },
+            { brand: "Apple", category: "iPad", title: "iPad Pro 11-inch (M2)", variants: [{ name: "128GB", price: 81900 }, { name: "256GB", price: 91900 }, { name: "512GB", price: 111900 }, { name: "1TB", price: 151900 }, { name: "2TB", price: 191900 }], image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80" },
+            { brand: "Apple", category: "iPad", title: "iPad Air (5th Gen)", variants: [{ name: "64GB", price: 59900 }, { name: "256GB", price: 74900 }], image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=800&q=80" },
+            { brand: "Apple", category: "iPad", title: "iPad (10th Gen)", variants: [{ name: "64GB", price: 44900 }, { name: "256GB", price: 59900 }], image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&q=80" },
+            { brand: "Apple", category: "iPad", title: "iPad Mini (6th Gen)", variants: [{ name: "64GB", price: 49900 }, { name: "256GB", price: 64900 }], image: "https://images.unsplash.com/photo-1636545281898-349f485db1f9?w=800&q=80" },
+
+            // Mac Series
+            { brand: "Apple", category: "Mac", title: "MacBook Pro 16-inch (M3 Max)", variants: [{ name: "36GB RAM / 1TB", price: 349900 }, { name: "48GB RAM / 1TB", price: 399900 }, { name: "128GB RAM / 8TB", price: 719900 }], image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80" },
+            { brand: "Apple", category: "Mac", title: "MacBook Pro 14-inch (M3 Pro)", variants: [{ name: "18GB RAM / 512GB", price: 199900 }, { name: "36GB RAM / 1TB", price: 239900 }], image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80" },
+            { brand: "Apple", category: "Mac", title: "MacBook Air 15-inch (M3)", variants: [{ name: "8GB / 256GB", price: 134900 }, { name: "16GB / 512GB", price: 154900 }], image: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=800&q=80" },
+            { brand: "Apple", category: "Mac", title: "MacBook Air 13-inch (M3)", variants: [{ name: "8GB / 256GB", price: 114900 }, { name: "16GB / 512GB", price: 134900 }], image: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=800&q=80" },
+            { brand: "Apple", category: "Mac", title: "iMac 24-inch (M3)", variants: [{ name: "8-Core GPU", price: 134900 }, { name: "10-Core GPU", price: 154900 }], image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&q=80" },
+            { brand: "Apple", category: "Mac", title: "Mac Studio (M2 Ultra)", variants: [{ name: "64GB RAM / 1TB", price: 419900 }, { name: "192GB RAM / 8TB", price: 879900 }], image: "https://images.unsplash.com/photo-1618252270966-4e50eb93b1eb?w=800&q=80" },
+            { brand: "Apple", category: "Mac", title: "Mac Mini (M2)", variants: [{ name: "256GB SSD", price: 59900 }, { name: "512GB SSD", price: 79900 }], image: "https://images.unsplash.com/photo-1618252270966-4e50eb93b1eb?w=800&q=80" },
+
+            // Watch Series
+            { brand: "Apple", category: "Watch", title: "Apple Watch Ultra 2", variants: [{ name: "49mm Titanium", price: 89900 }], image: "https://images.unsplash.com/photo-1663248386445-56543bca4ce1?w=800&q=80" },
+            { brand: "Apple", category: "Watch", title: "Apple Watch Series 9", variants: [{ name: "41mm GPS", price: 41900 }, { name: "45mm GPS", price: 44900 }, { name: "45mm Cellular", price: 54900 }], image: "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=800&q=80" },
+            { brand: "Apple", category: "Watch", title: "Apple Watch SE", variants: [{ name: "40mm GPS", price: 29900 }, { name: "44mm GPS", price: 32900 }], image: "https://images.unsplash.com/photo-1544117518-2b0417811c0d?w=800&q=80" },
+
+            // Audio
+            { brand: "Apple", category: "Audio", title: "AirPods Max", variants: [{ name: "Space Grey", price: 59900 }, { name: "Silver", price: 59900 }, { name: "Sky Blue", price: 59900 }], image: "https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=800&q=80" },
+            { brand: "Apple", category: "Audio", title: "AirPods Pro (2nd Gen)", variants: [{ name: "USB-C MagSafe", price: 24900 }], image: "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=800&q=80" },
+            { brand: "Apple", category: "Audio", title: "AirPods (3rd Gen)", variants: [{ name: "Lightning Case", price: 18900 }, { name: "MagSafe Case", price: 19900 }], image: "https://images.unsplash.com/photo-1608156639585-b3a032ef9689?w=800&q=80" },
+            { brand: "Apple", category: "Audio", title: "HomePod (2nd Gen)", variants: [{ name: "Midnight", price: 32900 }, { name: "White", price: 32900 }], image: "https://images.unsplash.com/photo-1616421528643-4a112dfd9d59?w=800&q=80" },
+
+            // Accessories
+            { brand: "Apple", category: "Accessory", title: "Apple Pencil (USB-C)", variants: [{ name: "Standard", price: 7900 }], image: "https://images.unsplash.com/photo-1602498226065-f480306ea64e?w=800&q=80" },
+            { brand: "Apple", category: "Accessory", title: "Apple Pencil (2nd Gen)", variants: [{ name: "Standard", price: 11900 }], image: "https://images.unsplash.com/photo-1602498226065-f480306ea64e?w=800&q=80" },
+            { brand: "Apple", category: "Accessory", title: "Magic Mouse", variants: [{ name: "White", price: 7500 }, { name: "Black", price: 9500 }], image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=800&q=80" },
+            { brand: "Apple", category: "Accessory", title: "Magic Keyboard (iPad Pro)", variants: [{ name: "11-inch", price: 29900 }, { name: "12.9-inch", price: 33900 }], image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&q=80" },
+            { brand: "Apple", category: "Accessory", title: "AirTag", variants: [{ name: "1-Pack", price: 3490 }, { name: "4-Pack", price: 11900 }], image: "https://images.unsplash.com/photo-1623863749449-3652db6e3557?w=800&q=80" }
+        ];
+
+        let cart = [];
+        let currentPage = 1;
+        const itemsPerPage = 8;
+        let currentFilter = 'all';
+
         // Add subtle interactive micro-animations
         const inputs = document.querySelectorAll('input');
         
@@ -756,86 +1234,52 @@
             document.querySelector('.container').style.display = 'flex';
         });
 
-        const products = [
-            // iPhone 15 Series
-            { brand: "Apple", category: "iPhone", title: "iPhone 15 Pro Max", variants: [{ name: "256GB", price: 159900 }, { name: "512GB", price: 179900 }, { name: "1TB", price: 199900 }], image: "https://images.unsplash.com/photo-1695048065099-35c9118c39e2?w=800&q=80" },
-            { brand: "Apple", category: "iPhone", title: "iPhone 15 Pro", variants: [{ name: "128GB", price: 134900 }, { name: "256GB", price: 144900 }, { name: "512GB", price: 164900 }, { name: "1TB", price: 184900 }], image: "https://images.unsplash.com/photo-1695048065099-35c9118c39e2?w=800&q=80" },
-            { brand: "Apple", category: "iPhone", title: "iPhone 15 Plus", variants: [{ name: "128GB", price: 89900 }, { name: "256GB", price: 99900 }, { name: "512GB", price: 119900 }], image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&q=80" },
-            { brand: "Apple", category: "iPhone", title: "iPhone 15", variants: [{ name: "128GB", price: 79900 }, { name: "256GB", price: 89900 }, { name: "512GB", price: 109900 }], image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&q=80" },
-            
-            // iPhone 14 & 13 Series
-            { brand: "Apple", category: "iPhone", title: "iPhone 14 Plus", variants: [{ name: "128GB", price: 79900 }, { name: "256GB", price: 89900 }, { name: "512GB", price: 109900 }], image: "https://images.unsplash.com/photo-1663465373010-85f1c95155f1?w=800&q=80" },
-            { brand: "Apple", category: "iPhone", title: "iPhone 14", variants: [{ name: "128GB", price: 69900 }, { name: "256GB", price: 79900 }, { name: "512GB", price: 99900 }], image: "https://images.unsplash.com/photo-1663465373010-85f1c95155f1?w=800&q=80" },
-            { brand: "Apple", category: "iPhone", title: "iPhone 13", variants: [{ name: "128GB", price: 59900 }, { name: "256GB", price: 69900 }, { name: "512GB", price: 89900 }], image: "https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=800&q=80" },
-            { brand: "Apple", category: "iPhone", title: "iPhone SE (2022)", variants: [{ name: "64GB", price: 49900 }, { name: "128GB", price: 54900 }, { name: "256GB", price: 64900 }], image: "https://images.unsplash.com/photo-1591337676887-a4b7f05e240b?w=800&q=80" },
-            
-            // iPad Series
-            { brand: "Apple", category: "iPad", title: "iPad Pro 12.9-inch (M2)", variants: [{ name: "128GB", price: 108900 }, { name: "256GB", price: 118900 }, { name: "512GB", price: 138900 }, { name: "1TB", price: 178900 }, { name: "2TB", price: 218900 }], image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&q=80" },
-            { brand: "Apple", category: "iPad", title: "iPad Pro 11-inch (M2)", variants: [{ name: "128GB", price: 81900 }, { name: "256GB", price: 91900 }, { name: "512GB", price: 111900 }, { name: "1TB", price: 151900 }, { name: "2TB", price: 191900 }], image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80" },
-            { brand: "Apple", category: "iPad", title: "iPad Air (5th Gen)", variants: [{ name: "64GB", price: 59900 }, { name: "256GB", price: 74900 }], image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=800&q=80" },
-            { brand: "Apple", category: "iPad", title: "iPad (10th Gen)", variants: [{ name: "64GB", price: 44900 }, { name: "256GB", price: 59900 }], image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&q=80" },
-            { brand: "Apple", category: "iPad", title: "iPad Mini (6th Gen)", variants: [{ name: "64GB", price: 49900 }, { name: "256GB", price: 64900 }], image: "https://images.unsplash.com/photo-1636545281898-349f485db1f9?w=800&q=80" },
-
-            // Mac Series
-            { brand: "Apple", category: "Mac", title: "MacBook Pro 16-inch (M3 Max)", variants: [{ name: "36GB RAM / 1TB", price: 349900 }, { name: "48GB RAM / 1TB", price: 399900 }, { name: "128GB RAM / 8TB", price: 719900 }], image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80" },
-            { brand: "Apple", category: "Mac", title: "MacBook Pro 14-inch (M3 Pro)", variants: [{ name: "18GB RAM / 512GB", price: 199900 }, { name: "36GB RAM / 1TB", price: 239900 }], image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80" },
-            { brand: "Apple", category: "Mac", title: "MacBook Air 15-inch (M3)", variants: [{ name: "8GB / 256GB", price: 134900 }, { name: "16GB / 512GB", price: 154900 }], image: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=800&q=80" },
-            { brand: "Apple", category: "Mac", title: "MacBook Air 13-inch (M3)", variants: [{ name: "8GB / 256GB", price: 114900 }, { name: "16GB / 512GB", price: 134900 }], image: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=800&q=80" },
-            { brand: "Apple", category: "Mac", title: "iMac 24-inch (M3)", variants: [{ name: "8-Core GPU", price: 134900 }, { name: "10-Core GPU", price: 154900 }], image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&q=80" },
-            { brand: "Apple", category: "Mac", title: "Mac Studio (M2 Ultra)", variants: [{ name: "64GB RAM / 1TB", price: 419900 }, { name: "192GB RAM / 8TB", price: 879900 }], image: "https://images.unsplash.com/photo-1618252270966-4e50eb93b1eb?w=800&q=80" },
-            { brand: "Apple", category: "Mac", title: "Mac Mini (M2)", variants: [{ name: "256GB SSD", price: 59900 }, { name: "512GB SSD", price: 79900 }], image: "https://images.unsplash.com/photo-1618252270966-4e50eb93b1eb?w=800&q=80" },
-
-            // Watch Series
-            { brand: "Apple", category: "Watch", title: "Apple Watch Ultra 2", variants: [{ name: "49mm Titanium", price: 89900 }], image: "https://images.unsplash.com/photo-1663248386445-56543bca4ce1?w=800&q=80" },
-            { brand: "Apple", category: "Watch", title: "Apple Watch Series 9", variants: [{ name: "41mm GPS", price: 41900 }, { name: "45mm GPS", price: 44900 }, { name: "45mm Cellular", price: 54900 }], image: "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=800&q=80" },
-            { brand: "Apple", category: "Watch", title: "Apple Watch SE", variants: [{ name: "40mm GPS", price: 29900 }, { name: "44mm GPS", price: 32900 }], image: "https://images.unsplash.com/photo-1544117518-2b0417813c0d?w=800&q=80" },
-
-            // Audio
-            { brand: "Apple", category: "Audio", title: "AirPods Max", variants: [{ name: "Space Grey", price: 59900 }, { name: "Silver", price: 59900 }, { name: "Sky Blue", price: 59900 }], image: "https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=800&q=80" },
-            { brand: "Apple", category: "Audio", title: "AirPods Pro (2nd Gen)", variants: [{ name: "USB-C MagSafe", price: 24900 }], image: "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=800&q=80" },
-            { brand: "Apple", category: "Audio", title: "AirPods (3rd Gen)", variants: [{ name: "Lightning Case", price: 18900 }, { name: "MagSafe Case", price: 19900 }], image: "https://images.unsplash.com/photo-1608156639585-b3a032ef9689?w=800&q=80" },
-            { brand: "Apple", category: "Audio", title: "HomePod (2nd Gen)", variants: [{ name: "Midnight", price: 32900 }, { name: "White", price: 32900 }], image: "https://images.unsplash.com/photo-1616421528643-4a112dfd9d59?w=800&q=80" },
-
-            // Accessories
-            { brand: "Apple", category: "Accessory", title: "Apple Pencil (USB-C)", variants: [{ name: "Standard", price: 7900 }], image: "https://images.unsplash.com/photo-1602498226065-f480306ea64e?w=800&q=80" },
-            { brand: "Apple", category: "Accessory", title: "Apple Pencil (2nd Gen)", variants: [{ name: "Standard", price: 11900 }], image: "https://images.unsplash.com/photo-1602498226065-f480306ea64e?w=800&q=80" },
-            { brand: "Apple", category: "Accessory", title: "Magic Mouse", variants: [{ name: "White", price: 7500 }, { name: "Black", price: 9500 }], image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=800&q=80" },
-            { brand: "Apple", category: "Accessory", title: "Magic Keyboard (iPad Pro)", variants: [{ name: "11-inch", price: 29900 }, { name: "12.9-inch", price: 33900 }], image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&q=80" },
-            { brand: "Apple", category: "Accessory", title: "AirTag", variants: [{ name: "1-Pack", price: 3490 }, { name: "4-Pack", price: 11900 }], image: "https://images.unsplash.com/photo-1623863749449-3652db6e3557?w=800&q=80" }
-        ];
-
-        let currentFilter = 'all';
-
         function formatPrice(price) {
             return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(price);
         }
 
         function renderProducts(searchQuery = '') {
             const grid = document.getElementById('productGrid');
+            const paginationContainer = document.getElementById('paginationControls');
             grid.innerHTML = '';
             
             const searchTerm = searchQuery.toLowerCase();
             const filteredProducts = products.filter(p => {
                 const matchesSearch = p.title.toLowerCase().includes(searchTerm) || 
-                                    p.category.toLowerCase().includes(searchTerm) ||
-                                    p.brand.toLowerCase().includes(searchTerm);
+                                     p.category.toLowerCase().includes(searchTerm) ||
+                                     p.brand.toLowerCase().includes(searchTerm);
                 const matchesCategory = currentFilter === 'all' || p.category === currentFilter;
                 return matchesSearch && matchesCategory;
             });
 
             if (filteredProducts.length === 0) {
                 grid.innerHTML = '<div class="no-results">No products found matching your criteria.</div>';
+                paginationContainer.innerHTML = '';
                 return;
             }
 
+            // Pagination Slicing
+            const totalItems = filteredProducts.length;
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            
+            // Fix current page if out of bounds
+            if (currentPage > totalPages) currentPage = totalPages;
+            if (currentPage < 1) currentPage = 1;
+
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
+
             let lastCategory = '';
 
-            filteredProducts.forEach((product, index) => {
-                // Only show category headers if we are in 'all' view
-                if (currentFilter === 'all' && product.category !== lastCategory) {
+            paginatedProducts.forEach((product, index) => {
+                // Show category headers if in 'all' view and category changes
+                if (currentFilter === 'all' && product.category !== lastCategory && searchQuery === '') {
                     const header = document.createElement('h2');
                     header.className = 'category-title';
-                    header.textContent = `${product.category}`;
+                    header.style.width = '100%';
+                    header.style.margin = '2rem 0 1rem';
+                    header.textContent = product.category;
                     grid.appendChild(header);
                     lastCategory = product.category;
                 }
@@ -843,14 +1287,14 @@
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 
-                // Staggered animation
                 setTimeout(() => card.classList.add('show'), index * 30);
 
-                const productId = `prod-${index}`;
+                const globalIndex = products.indexOf(product);
+                const productId = `prod-${globalIndex}`;
                 
                 card.innerHTML = `
-                    <div class="product-img-container">
-                        <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy">
+                    <div class="product-img-container" onclick="openProductDetail(${globalIndex})">
+                        <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80'">
                     </div>
                     <div class="product-info">
                         <div class="product-tag">${product.brand}</div>
@@ -858,8 +1302,8 @@
                         
                         <div class="variant-selector">
                             <label style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem; display: block;">Select Variant</label>
-                            <select onchange="updatePrice('${productId}', this.value)">
-                                ${product.variants.map((v, i) => `<option value="${v.price}">${v.name}</option>`).join('')}
+                            <select id="select-${productId}" onchange="updatePrice('${productId}', this.value)">
+                                ${product.variants.map((v, i) => `<option value="${v.price}" data-name="${v.name}">${v.name}</option>`).join('')}
                             </select>
                         </div>
 
@@ -867,11 +1311,314 @@
                             <span class="product-price" id="price-${productId}">${formatPrice(product.variants[0].price)}</span>
                             <span class="price-label">Excl. Tax</span>
                         </div>
+
+                        <button class="add-to-cart-btn" onclick="handleAddToCart(${globalIndex}, '${productId}')">Add to Cart</button>
+                        <button class="view-detail-btn" onclick="openProductDetail(${globalIndex})">View Full Details</button>
                     </div>
                 `;
                 grid.appendChild(card);
             });
+
+            renderPagination(totalItems);
         }
+
+        function renderPagination(totalItems) {
+            const container = document.getElementById('paginationControls');
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            
+            if (totalPages <= 1) {
+                container.innerHTML = '';
+                return;
+            }
+
+            container.innerHTML = `
+                <button class="pagination-btn" ${currentPage === 1 ? 'disabled' : ''} onclick="changePage(-1)">
+                    <span>←</span> Previous
+                </button>
+                <div class="page-info">Page ${currentPage} of ${totalPages}</div>
+                <button class="pagination-btn" ${currentPage === totalPages ? 'disabled' : ''} onclick="changePage(1)">
+                    Next <span>→</span>
+                </button>
+            `;
+        }
+
+        function changePage(delta) {
+            currentPage += delta;
+            renderProducts(document.getElementById('productSearch').value);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Cart & Modal Logic
+        function handleAddToCart(productIndex, elementId) {
+            const product = products[productIndex];
+            const select = document.getElementById(`select-${elementId}`);
+            const price = parseInt(select.value);
+            const variantName = select.options[select.selectedIndex].getAttribute('data-name');
+            
+            addToCart(product.title, product.brand, product.image, price, variantName);
+        }
+
+        function addToCart(title, brand, image, price, variantName) {
+            const itemId = `${title}-${variantName}`;
+            const existingItem = cart.find(item => item.itemId === itemId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    itemId,
+                    title,
+                    brand,
+                    image,
+                    price,
+                    variantName,
+                    quantity: 1
+                });
+            }
+
+            updateCartBadge();
+            showToast(`Added ${title} (${variantName}) to cart!`, 'success');
+        }
+
+        function updateCartBadge() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartBadge').textContent = totalItems;
+        }
+
+        function toggleCart() {
+            const overlay = document.getElementById('modalOverlay');
+            const body = document.getElementById('modalBody');
+            
+            if (overlay.classList.contains('active')) {
+                overlay.classList.remove('active');
+            } else {
+                renderCart();
+                overlay.classList.add('active');
+            }
+        }
+
+        function renderCart() {
+            const body = document.getElementById('modalBody');
+            if (cart.length === 0) {
+                body.innerHTML = `
+                    <div style="text-align: center; padding: 3rem;">
+                        <h2 style="margin-bottom: 1rem;">Your Cart is Empty</h2>
+                        <p style="color: var(--text-secondary);">Browse our catalog to add premium products.</p>
+                        <button class="add-to-cart-btn" style="width: auto; padding: 0.75rem 2rem; margin-top: 2rem;" onclick="toggleCart()">Start Shopping</button>
+                    </div>
+                `;
+                return;
+            }
+
+            let total = 0;
+            const itemsHtml = cart.map((item, index) => {
+                total += item.price * item.quantity;
+                return `
+                    <div class="cart-item">
+                        <div class="cart-item-img">
+                            <img src="${item.image}" alt="${item.title}">
+                        </div>
+                        <div class="cart-item-info">
+                            <h4>${item.title}</h4>
+                            <p>${item.variantName} • ${formatPrice(item.price)}</p>
+                        </div>
+                        <div class="cart-item-qty">
+                            <button class="qty-btn" onclick="updateQuantity('${item.itemId}', -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="qty-btn" onclick="updateQuantity('${item.itemId}', 1)">+</button>
+                        </div>
+                        <div style="font-weight: 700; width: 100px; text-align: right;">
+                            ${formatPrice(item.price * item.quantity)}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            body.innerHTML = `
+                <h2 style="margin-bottom: 2rem;">Shopping Cart</h2>
+                <div class="cart-items-list">
+                    ${itemsHtml}
+                </div>
+                <div class="cart-total">
+                    <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Estimated Total (Excl. Tax)</p>
+                    <h3>${formatPrice(total)}</h3>
+                </div>
+                <button class="checkout-btn" onclick="handleCheckout()">Proceed to Enterprise Checkout</button>
+            `;
+        }
+
+        function updateQuantity(itemId, delta) {
+            const item = cart.find(i => i.itemId === itemId);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.itemId !== itemId);
+                }
+                updateCartBadge();
+                renderCart();
+            }
+        }
+
+        function handleCheckout() {
+            showToast('Initializing secure enterprise checkout...', 'loading');
+            setTimeout(() => {
+                showToast('Checkout simulated. Order request sent to procurement.', 'success');
+                cart = [];
+                updateCartBadge();
+                toggleCart();
+            }, 2000);
+        }
+
+        // Product Detail Logic
+        function openProductDetail(productIndex) {
+            const product = products[productIndex];
+            if (!product) {
+                showToast('Product data not found.', 'error');
+                return;
+            }
+
+            const overlay = document.getElementById('modalOverlay');
+            const body = document.getElementById('modalBody');
+            
+            if (!overlay || !body) {
+                console.error('Modal elements not found in DOM');
+                return;
+            }
+
+            const overviewDescription = "Experience the pinnacle of engineering with the " + product.title + ". Designed for elite performance and unmatched reliability, this " + product.brand + " masterpiece sets a new standard for excellence in the " + product.category + " ecosystem.";
+
+            body.innerHTML = `
+                <div class="product-detail-container">
+                    <div class="detail-image">
+                        <img src="${product.image}" alt="${product.title}">
+                    </div>
+                    <div class="detail-info">
+                        <div class="product-tag">${product.brand} • ${product.category}</div>
+                        <h2 class="product-title" style="margin-bottom: 0.5rem;">${product.title}</h2>
+                        <div style="display: flex; gap: 0.5rem; color: #fbbf24; margin-bottom: 1.5rem; font-size: 0.9rem;">
+                            <span>★★★★★</span>
+                            <span style="color: var(--text-secondary);">(4.9/5 Based on 2,450 Reviews)</span>
+                        </div>
+                        
+                        <div class="variant-selector">
+                            <label style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.5rem; display: block;">Select Configuration</label>
+                            <select id="detail-select" onchange="updateDetailPrice(this.value)">
+                                ${product.variants.map((v, i) => `<option value="${v.price}" data-name="${v.name}">${v.name}</option>`).join('')}
+                            </select>
+                        </div>
+
+                        <div class="product-price-container" style="margin: 2rem 0;">
+                            <span class="product-price" id="detail-price" style="font-size: 2.5rem;">${formatPrice(product.variants[0].price)}</span>
+                            <span class="price-label">Excl. Tax</span>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; align-items: flex-end;">
+                            <div style="flex: 1;">
+                                <label style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 0.5rem;">Quantity</label>
+                                <div class="qty-selector">
+                                    <button class="qty-btn" onclick="updateDetailQty(-1)">-</button>
+                                    <span id="detail-qty">1</span>
+                                    <button class="qty-btn" onclick="updateDetailQty(1)">+</button>
+                                </div>
+                            </div>
+                            <button class="add-to-cart-btn" style="padding: 1rem; flex: 2; margin-top: 0;" onclick="handleDetailAddToCart(${productIndex})">Add to Dashboard Cart</button>
+                        </div>
+
+                        <div class="highlights">
+                            <div class="highlight-item"><span>🛡️</span> 2 Year Warranty</div>
+                            <div class="highlight-item"><span>🚚</span> Fast Delivery</div>
+                            <div class="highlight-item"><span>🔄</span> 30 Day Return</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-tabs">
+                    <div class="detail-tab active" onclick="switchDetailTab(event, 'overview')">Overview</div>
+                    <div class="detail-tab" onclick="switchDetailTab(event, 'specs')">Specifications</div>
+                    <div class="detail-tab" onclick="switchDetailTab(event, 'shipping')">Shipping & Returns</div>
+                </div>
+
+                <div id="overview" class="detail-tab-content active">
+                    <p class="detail-description">${overviewDescription}</p>
+                    <p class="detail-description" style="margin-top: 1rem;">This high-performance device is optimized for professional workflows, offering industry-leading efficiency and seamless integration into the Gemini Enterprise network.</p>
+                </div>
+
+                <div id="specs" class="detail-tab-content">
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <div class="spec-label">Processor</div>
+                            <div class="spec-value">Enterprise Gen-3 Chip</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Connectivity</div>
+                            <div class="spec-value">5G / Wi-Fi 6E / Bluetooth 5.3</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Build Material</div>
+                            <div class="spec-value">Aerospace-grade Aluminum</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Battery Life</div>
+                            <div class="spec-value">Up to 24 Hours Active Use</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="shipping" class="detail-tab-content">
+                    <p class="detail-description">All enterprise orders are processed within 24 hours. We offer complimentary express shipping globally for corporate accounts.</p>
+                    <ul style="margin-top: 1rem; color: var(--text-secondary); line-height: 1.8; margin-left: 1.5rem;">
+                        <li>Standard Delivery: 3-5 Business Days</li>
+                        <li>Express Delivery: 1-2 Business Days</li>
+                        <li>Return Policy: No-questions-asked 30-day return for corporate inventory.</li>
+                    </ul>
+                </div>
+            `;
+
+            overlay.classList.add('active');
+        }
+
+        function switchDetailTab(event, tabId) {
+            document.querySelectorAll('.detail-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.detail-tab-content').forEach(c => c.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        let detailQty = 1;
+        function updateDetailQty(delta) {
+            detailQty += delta;
+            if (detailQty < 1) detailQty = 1;
+            document.getElementById('detail-qty').textContent = detailQty;
+        }
+
+        function updateDetailPrice(price) {
+            document.getElementById('detail-price').textContent = formatPrice(price);
+        }
+
+        function handleDetailAddToCart(productIndex) {
+            const product = products[productIndex];
+            const select = document.getElementById('detail-select');
+            const price = parseInt(select.value);
+            const variantName = select.options[select.selectedIndex].getAttribute('data-name');
+            
+            for(let i=0; i<detailQty; i++) {
+                addToCart(product.title, product.brand, product.image, price, variantName);
+            }
+            detailQty = 1; // Reset for next use
+        }
+
+        // Close Modal Events
+        document.getElementById('closeModal').onclick = () => {
+            document.getElementById('modalOverlay').classList.remove('active');
+        };
+
+        window.onclick = (event) => {
+            const overlay = document.getElementById('modalOverlay');
+            if (event.target == overlay) {
+                overlay.classList.remove('active');
+            }
+        };
 
         function updatePrice(id, price) {
             document.getElementById(`price-${id}`).textContent = formatPrice(price);
@@ -879,6 +1626,7 @@
 
         // Search logic
         document.getElementById('productSearch').addEventListener('input', (e) => {
+            currentPage = 1;
             renderProducts(e.target.value);
         });
 
@@ -888,6 +1636,7 @@
                 document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
                 e.target.classList.add('active');
                 currentFilter = e.target.dataset.category;
+                currentPage = 1;
                 renderProducts(document.getElementById('productSearch').value);
             }
         });
@@ -925,5 +1674,14 @@
             }, 1500);
         });
     </script>
+    <!-- Modal Overlay for Cart and Product Details -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div id="modalBody">
+                <!-- Content will be dynamically injected here -->
+            </div>
+        </div>
+    </div>
 </body>
 </html>
