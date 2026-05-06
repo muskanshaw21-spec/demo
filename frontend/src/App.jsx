@@ -5,154 +5,147 @@ import Login from './Login';
 const dummyProducts = [
   { 
     id: 1, 
-    name: 'iPhone 15 Pro Max', 
-    brand: 'APPLE',
-    price: 159900, 
-    originalPrice: 169900,
-    image: 'https://images.unsplash.com/photo-1695048065099-35c9118c39e2?w=1600&q=90', 
-    category: 'iPhone',
+    name: 'Premium Red Puffer Jacket', 
+    brand: 'GEMINI OUTERWEAR',
+    price: 7490, 
+    originalPrice: 9990,
+    image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=1600&q=90', 
+    category: 'MEN',
     rating: 4.9,
-    reviews: '25,450',
-    description: 'The ultimate iPhone. With the A17 Pro chip, a customizable Action button, and the most powerful iPhone camera system ever.',
-    features: ['Titanium design', 'A17 Pro chip', '5x Telephoto camera'],
-    sizes: ['256GB', '512GB', '1TB'],
-    sizePricing: { '256GB': 159900, '512GB': 179900, '1TB': 199900 },
-    colors: ['Natural Titanium', 'Blue Titanium', 'White Titanium', 'Black Titanium'],
-    colorMap: {
-      'Natural Titanium': '#8e8a84',
-      'Blue Titanium': '#444d5a',
-      'White Titanium': '#f2f1ed',
-      'Black Titanium': '#464646'
-    },
-    variantData: {
-      'Natural Titanium': {
-        main: 'https://images.unsplash.com/photo-1695048065099-35c9118c39e2?w=1600&q=90',
-        gallery: ['https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&q=80']
-      }
-    },
-    sku: 'APL-I15-PM',
-    tags: ['iOS', 'Flagship'],
-    additionalInfo: 'USB-C Charging'
+    reviews: '8k+',
+    description: 'A premium lightweight red puffer jacket designed for extreme comfort.',
+    features: ['Water-resistant', 'Lightweight'],
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Red', 'Black'],
+    colorMap: { 'Red': '#ef4444', 'Black': '#000000' },
+    sku: 'GM-PJ-001',
+    tags: ['Outerwear', 'Winter']
   },
   { 
     id: 2, 
-    name: 'MacBook Pro 16-inch M3 Max', 
-    brand: 'APPLE',
-    price: 349900, 
-    originalPrice: 369900,
-    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1600&q=90', 
-    category: 'Mac',
-    rating: 4.9,
-    reviews: '8,200',
-    description: 'The most advanced chips ever built for a personal computer. M3, M3 Pro, and M3 Max chips deliver extreme performance.',
-    features: ['Liquid Retina XDR', 'Up to 22h battery', 'MagSafe 3'],
-    sizes: ['1TB SSD', '2TB SSD', '4TB SSD'],
-    sizePricing: { '1TB SSD': 349900, '2TB SSD': 389900, '4TB SSD': 449900 },
-    colors: ['Space Black', 'Silver'],
-    colorMap: {
-      'Space Black': '#1c1c1c',
-      'Silver': '#d1d5db'
-    },
-    sku: 'APL-MBP-16',
-    tags: ['Laptop', 'Workstation'],
-    additionalInfo: 'ProMotion technology'
+    name: 'Floral Print Summer Dress', 
+    brand: 'GEMINI WOMEN',
+    price: 3490, 
+    originalPrice: 4990,
+    image: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=1600&q=90', 
+    category: 'Women',
+    rating: 4.8,
+    reviews: '5k+',
+    description: 'Flowy and elegant floral dress perfect for summer.',
+    features: ['100% Cotton'],
+    sizes: ['S', 'M', 'L'],
+    colors: ['Floral'],
+    colorMap: { 'Floral': '#f9a8d4' },
+    sku: 'GM-WD-005',
+    tags: ['Summer', 'Elegant']
   },
   { 
     id: 3, 
-    name: 'iPad Pro 12.9-inch M2', 
-    brand: 'APPLE',
-    price: 108900, 
-    originalPrice: 112900,
-    image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=1600&q=90', 
-    category: 'iPad',
-    rating: 4.8,
-    reviews: '12,100',
-    description: 'Astonishing performance. Incredibly advanced displays. Superfast wireless connectivity. Next-level Apple Pencil capabilities.',
-    features: ['M2 Chip', 'Liquid Retina XDR', 'Wi-Fi 6E'],
-    sizes: ['128GB', '256GB', '512GB', '1TB', '2TB'],
-    sizePricing: { '128GB': 108900, '256GB': 118900, '512GB': 138900, '1TB': 178900, '2TB': 218900 },
-    colors: ['Space Grey', 'Silver'],
-    colorMap: {
-      'Space Grey': '#535353',
-      'Silver': '#d1d5db'
-    },
-    sku: 'APL-IPD-PRO',
-    tags: ['Tablet', 'Pro'],
-    additionalInfo: 'Face ID'
+    name: 'Classic Denim Jacket', 
+    brand: 'GEMINI MEN',
+    price: 4590, 
+    originalPrice: 6590,
+    image: 'https://images.unsplash.com/photo-1576905300580-693525ecf2f6?w=1600&q=90', 
+    category: 'MEN',
+    rating: 4.7,
+    reviews: '3.2k+',
+    description: 'A timeless denim jacket for a classic look.',
+    features: ['Durable denim'],
+    sizes: ['M', 'L', 'XL'],
+    colors: ['Blue'],
+    colorMap: { 'Blue': '#3b82f6' },
+    sku: 'GM-MD-009',
+    tags: ['Classic']
   },
   { 
     id: 4, 
-    name: 'Apple Watch Ultra 2', 
-    brand: 'APPLE',
-    price: 89900, 
-    originalPrice: 94900,
-    image: 'https://images.unsplash.com/photo-1663248386445-56543bca4ce1?w=1600&q=90', 
-    category: 'Watch',
-    rating: 4.9,
-    reviews: '5,400',
-    description: 'The most rugged and capable Apple Watch. Designed for the demands of endurance athletes, outdoor adventurers, and water sports enthusiasts.',
-    features: ['Titanium case', 'Up to 36h battery', 'S9 SiP'],
-    sizes: ['49mm'],
-    sizePricing: { '49mm': 89900 },
-    colors: ['Natural Titanium'],
-    colorMap: {
-      'Natural Titanium': '#c5c5c5'
-    },
-    sku: 'APL-WCH-U2',
-    tags: ['Sport', 'Rugged'],
-    additionalInfo: 'Water resistant 100m'
+    name: 'Kids Graphic T-Shirt', 
+    brand: 'GEMINI KIDS',
+    price: 990, 
+    originalPrice: 1490,
+    image: 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=1600&q=90', 
+    category: 'KIDS',
+    rating: 4.6,
+    reviews: '1.2k+',
+    description: 'Cool graphic t-shirt for active kids.',
+    features: ['Soft cotton'],
+    sizes: ['4Y', '6Y', '8Y'],
+    colors: ['Yellow', 'Blue'],
+    colorMap: { 'Yellow': '#fde047', 'Blue': '#3b82f6' },
+    sku: 'GM-KT-012',
+    tags: ['Kids', 'Casual']
   },
   { 
     id: 5, 
-    name: 'AirPods Max', 
-    brand: 'APPLE',
-    price: 59900, 
-    originalPrice: 64900,
-    image: 'https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=1600&q=90', 
-    category: 'Audio',
-    rating: 4.7,
-    reviews: '15,000',
-    description: 'AirPods Max reimagine over-ear headphones. An Apple-designed dynamic driver provides immersive high-fidelity audio.',
-    features: ['Active Noise Cancellation', 'Transparency mode', 'Spatial audio'],
-    sizes: ['Standard'],
-    sizePricing: { 'Standard': 59900 },
-    colors: ['Space Grey', 'Silver', 'Sky Blue', 'Pink', 'Green'],
-    colorMap: {
-      'Space Grey': '#374151',
-      'Silver': '#d1d5db',
-      'Sky Blue': '#93c5fd',
-      'Pink': '#f9a8d4',
-      'Green': '#86efac'
-    },
-    sku: 'APL-APD-MAX',
-    tags: ['Audio', 'ANC'],
-    additionalInfo: '20 hours battery'
+    name: 'Leather Handbag', 
+    brand: 'GEMINI ACCESSORIES',
+    price: 5990, 
+    originalPrice: 8990,
+    image: 'https://images.unsplash.com/photo-1584917033904-4911785b0953?w=1600&q=90', 
+    category: 'Women',
+    rating: 4.9,
+    reviews: '2.5k+',
+    description: 'Elegant leather handbag for the modern woman.',
+    features: ['Genuine leather'],
+    sizes: ['One Size'],
+    colors: ['Tan', 'Black'],
+    colorMap: { 'Tan': '#d97706', 'Black': '#000000' },
+    sku: 'GM-WA-015',
+    tags: ['Luxury', 'Accessory']
   },
   { 
     id: 6, 
-    name: 'iPhone 15', 
-    brand: 'APPLE',
-    price: 79900, 
-    originalPrice: 84900,
-    image: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=1600&q=90', 
-    category: 'iPhone',
+    name: 'Kids Sport Shoes', 
+    brand: 'GEMINI KIDS',
+    price: 2490, 
+    originalPrice: 3490,
+    image: 'https://images.unsplash.com/photo-1514989940723-e8e51635b782?w=1600&q=90', 
+    category: 'KIDS',
+    rating: 4.7,
+    reviews: '900',
+    description: 'Lightweight and durable sport shoes for kids.',
+    features: ['Breathable mesh'],
+    sizes: ['2Y', '4Y', '6Y'],
+    colors: ['Blue/Red'],
+    colorMap: { 'Blue/Red': '#3b82f6' },
+    sku: 'GM-KS-016',
+    tags: ['Sport', 'Kids']
+  },
+  { 
+    id: 7, 
+    name: 'Men Formal Shirt', 
+    brand: 'GEMINI FORMALS',
+    price: 2990, 
+    originalPrice: 3990,
+    image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=1600&q=90', 
+    category: 'MEN',
     rating: 4.8,
-    reviews: '45,000',
-    description: 'Dynamic Island comes to iPhone 15. The innovative design features back glass that has color infused throughout the material.',
-    features: ['Dynamic Island', '48MP Main camera', 'A16 Bionic'],
-    sizes: ['128GB', '256GB', '512GB'],
-    sizePricing: { '128GB': 79900, '256GB': 89900, '512GB': 109900 },
-    colors: ['Pink', 'Yellow', 'Green', 'Blue', 'Black'],
-    colorMap: {
-      'Pink': '#f9a8d4',
-      'Yellow': '#fde047',
-      'Green': '#86efac',
-      'Blue': '#93c5fd',
-      'Black': '#000000'
-    },
-    sku: 'APL-I15-STD',
-    tags: ['iOS', 'Standard'],
-    additionalInfo: 'Ceramic Shield front'
+    reviews: '4k+',
+    description: 'Crisp formal shirt for professional settings.',
+    features: ['Slim fit'],
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['White', 'Light Blue'],
+    colorMap: { 'White': '#ffffff', 'Light Blue': '#93c5fd' },
+    sku: 'GM-MF-017',
+    tags: ['Office', 'Formal']
+  },
+  { 
+    id: 8, 
+    name: 'Women High-Waist Jeans', 
+    brand: 'GEMINI DENIM',
+    price: 3990, 
+    originalPrice: 5490,
+    image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=1600&q=90', 
+    category: 'Women',
+    rating: 4.7,
+    reviews: '6k+',
+    description: 'Stylish high-waist jeans with a perfect fit.',
+    features: ['Stretchable'],
+    sizes: ['26', '28', '30', '32'],
+    colors: ['Blue'],
+    colorMap: { 'Blue': '#1d4ed8' },
+    sku: 'GM-WD-018',
+    tags: ['Denim', 'Trendy']
   }
 ];
 
@@ -169,9 +162,39 @@ function App() {
   const [view, setView] = useState('store'); // 'store' or 'cart'
   const [checkoutStep, setCheckoutStep] = useState(1); // 1: Bag, 2: Checkout, 3: Confirmation
   const [activeViewCategory, setActiveViewCategory] = useState('all');
-  const [theme, setTheme] = useState('dark');
+  const [selectedBrands, setSelectedBrands] = useState([]);
+  const [selectedPriceRange, setSelectedPriceRange] = useState('all');
+  const [sortBy, setSortBy] = useState('Recommended');
+  const [theme, setTheme] = useState('light'); // Default to light for Myntra look
+  const [searchQuery, setSearchQuery] = useState('');
 
   const toggleTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'light');
+
+  const toggleBrand = (brand) => {
+    setSelectedBrands(prev => 
+      prev.includes(brand) ? prev.filter(b => b !== brand) : [...prev, brand]
+    );
+  };
+
+  const goToNextProduct = () => {
+    const currentIndex = dummyProducts.findIndex(p => p.id === selectedProduct.id);
+    const nextIndex = (currentIndex + 1) % dummyProducts.length;
+    setSelectedProduct(dummyProducts[nextIndex]);
+  };
+
+  const goToPrevProduct = () => {
+    const currentIndex = dummyProducts.findIndex(p => p.id === selectedProduct.id);
+    const prevIndex = (currentIndex - 1 + dummyProducts.length) % dummyProducts.length;
+    setSelectedProduct(dummyProducts[prevIndex]);
+  };
+
+  const handleClearAll = () => {
+    setActiveViewCategory('all');
+    setSelectedBrands([]);
+    setSelectedPriceRange('all');
+    setSortBy('Recommended');
+    setSearchQuery('');
+  };
 
   // Prevent scrolling and initialize modal state
   useEffect(() => {
@@ -260,14 +283,48 @@ function App() {
   const total = subtotal + gst + shipping;
 
   const renderStore = () => {
-    const filteredProducts = activeViewCategory === 'all' 
-      ? dummyProducts 
-      : dummyProducts.filter(p => p.category === activeViewCategory);
+    const brands = [...new Set(dummyProducts.map(p => p.brand))];
+    
+    let filteredProducts = dummyProducts.filter(p => {
+      const matchesCategory = activeViewCategory === 'all' || p.category === activeViewCategory;
+      const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.brand.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(p.brand);
+      
+      let matchesPrice = true;
+      if (selectedPriceRange === '0-2000') matchesPrice = p.price <= 2000;
+      else if (selectedPriceRange === '2000-5000') matchesPrice = p.price > 2000 && p.price <= 5000;
+      else if (selectedPriceRange === '5000-plus') matchesPrice = p.price > 5000;
+      
+      return matchesCategory && matchesSearch && matchesBrand && matchesPrice;
+    });
+
+    if (sortBy === 'Price: Low to High') {
+      filteredProducts.sort((a, b) => a.price - b.price);
+    } else if (sortBy === 'Price: High to Low') {
+      filteredProducts.sort((a, b) => b.price - a.price);
+    } else if (sortBy === 'Customer Rating') {
+      filteredProducts.sort((a, b) => b.rating - a.rating);
+    }
 
     return (
       <main className="main-content store-view">
+        {/* Banner Section */}
+        <section className="promo-banners">
+          <div className="main-banner">
+            <img src="/promo_banner.png" alt="Get 25% Off" />
+          </div>
+          <div className="featured-banner">
+            <div className="featured-content">
+              <h2>U.S. POLO ASSN.</h2>
+              <p>Up To 50% Off</p>
+              <button className="explore-btn">+ Explore</button>
+            </div>
+            <img src="/featured_banner.png" alt="Featured Collection" />
+          </div>
+        </section>
+
         <div className="breadcrumb-nav">
-          <span>Home / <strong>Products</strong></span>
+          <span>Home / <strong>Shop</strong></span>
         </div>
 
         <div className="store-layout">
@@ -275,44 +332,48 @@ function App() {
           <aside className="sidebar">
             <div className="filter-header">
               <h3>FILTERS</h3>
-              <button className="clear-all">CLEAR ALL</button>
+              <button className="clear-all" onClick={handleClearAll}>CLEAR ALL</button>
             </div>
 
             <div className="filter-section">
               <h4>CATEGORIES</h4>
               <div className="filter-options">
-                <label onClick={() => setActiveViewCategory('all')}><input type="radio" name="cat" checked={activeViewCategory === 'all'} readOnly /> All Products</label>
-                <label onClick={() => setActiveViewCategory('iPhone')}><input type="radio" name="cat" checked={activeViewCategory === 'iPhone'} readOnly /> iPhone</label>
-                <label onClick={() => setActiveViewCategory('Mac')}><input type="radio" name="cat" checked={activeViewCategory === 'Mac'} readOnly /> Mac</label>
-                <label onClick={() => setActiveViewCategory('iPad')}><input type="radio" name="cat" checked={activeViewCategory === 'iPad'} readOnly /> iPad</label>
-                <label onClick={() => setActiveViewCategory('Watch')}><input type="radio" name="cat" checked={activeViewCategory === 'Watch'} readOnly /> Watch</label>
-                <label onClick={() => setActiveViewCategory('Audio')}><input type="radio" name="cat" checked={activeViewCategory === 'Audio'} readOnly /> Audio</label>
+                {['all', 'MEN', 'Women', 'KIDS', 'Electronics', 'Footwear'].map(cat => (
+                  <label key={cat} onClick={() => setActiveViewCategory(cat)}>
+                    <input type="radio" name="cat" checked={activeViewCategory === cat} readOnly /> 
+                    {cat === 'all' ? 'All Products' : cat}
+                  </label>
+                ))}
               </div>
             </div>
 
             <div className="filter-section">
               <h4>BRAND</h4>
               <div className="filter-options">
-                <label><input type="checkbox" defaultChecked /> APPLE</label>
+                {brands.map(brand => (
+                  <label key={brand} onClick={() => toggleBrand(brand)}>
+                    <input type="checkbox" checked={selectedBrands.includes(brand)} readOnly /> 
+                    {brand}
+                  </label>
+                ))}
               </div>
             </div>
 
             <div className="filter-section">
               <h4>PRICE</h4>
               <div className="filter-options">
-                <label><input type="radio" name="price" /> Rs. 0 to Rs. 100</label>
-                <label><input type="radio" name="price" /> Rs. 100 to Rs. 200</label>
-                <label><input type="radio" name="price" /> Rs. 200 to Rs. 500</label>
-              </div>
-            </div>
-
-            <div className="filter-section">
-              <h4>COLOR</h4>
-              <div className="color-swatches-filter">
-                <span className="swatch" style={{backgroundColor: '#000000'}}></span>
-                <span className="swatch" style={{backgroundColor: '#ffffff', border: '1px solid #ddd'}}></span>
-                <span className="swatch" style={{backgroundColor: '#3b82f6'}}></span>
-                <span className="swatch" style={{backgroundColor: '#ef4444'}}></span>
+                <label onClick={() => setSelectedPriceRange('all')}>
+                  <input type="radio" name="price" checked={selectedPriceRange === 'all'} readOnly /> All Prices
+                </label>
+                <label onClick={() => setSelectedPriceRange('0-2000')}>
+                  <input type="radio" name="price" checked={selectedPriceRange === '0-2000'} readOnly /> Under ₹2000
+                </label>
+                <label onClick={() => setSelectedPriceRange('2000-5000')}>
+                  <input type="radio" name="price" checked={selectedPriceRange === '2000-5000'} readOnly /> ₹2000 - ₹5000
+                </label>
+                <label onClick={() => setSelectedPriceRange('5000-plus')}>
+                  <input type="radio" name="price" checked={selectedPriceRange === '5000-plus'} readOnly /> Over ₹5000
+                </label>
               </div>
             </div>
           </aside>
@@ -325,7 +386,7 @@ function App() {
               </div>
               <div className="sort-by">
                 <span>Sort by:</span>
-                <select>
+                <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
                   <option>Recommended</option>
                   <option>Price: Low to High</option>
                   <option>Price: High to Low</option>
@@ -342,9 +403,6 @@ function App() {
                     <div className="rating-badge">
                       <span>{product.rating} ★ | {product.reviews}</span>
                     </div>
-                    <div className="view-details-overlay">
-                      <span>View Details</span>
-                    </div>
                   </div>
                   <div className="card-content">
                     <h4 className="brand-name">{product.brand}</h4>
@@ -352,26 +410,10 @@ function App() {
                     <div className="price-row">
                       <span className="current-price">₹{product.price.toLocaleString('en-IN')}</span>
                       {product.originalPrice && (
-                        <>
-                          <span className="original-price">₹{product.originalPrice.toLocaleString('en-IN')}</span>
-                          <span className="discount-tag">({Math.round((1 - product.price/product.originalPrice) * 100)}% OFF)</span>
-                        </>
+                        <span className="original-price">₹{product.originalPrice.toLocaleString('en-IN')}</span>
                       )}
+                      <span className="discount-tag">({Math.round((1 - product.price/product.originalPrice) * 100)}% OFF)</span>
                     </div>
-                    <div className="card-swatches">
-                      {product.colors.map(color => (
-                        <span 
-                          key={color} 
-                          className="mini-swatch" 
-                          style={{ background: product.colorMap[color] }}
-                        ></span>
-                      ))}
-                    </div>
-                    <button className="add-to-cart-btn" onClick={() => {
-                      addToCart(product, 1, product.sizes[0], product.colors[0]);
-                    }}>
-                      Add to Cart
-                    </button>
                   </div>
                 </div>
               ))}
@@ -663,23 +705,49 @@ function App() {
 
   return (
     <div className={`app-container ${isCartOpen ? 'cart-open' : ''}`}>
-      <nav className="navbar">
-        <div className="nav-logo" onClick={() => setView('store')} style={{cursor: 'pointer'}}>GeminiCommerce</div>
-        <div className="nav-actions">
-          <button className="theme-toggle" onClick={toggleTheme} title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}>
-            {theme === 'light' ? (
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
-            ) : (
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
-            )}
-          </button>
-          <div className="nav-cart" onClick={() => setView('cart')}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="9" cy="21" r="1"></circle>
-              <circle cx="20" cy="21" r="1"></circle>
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+      <nav className="navbar myntra-nav">
+        <div className="nav-left">
+          <div className="nav-logo" onClick={() => setView('store')}>
+            <svg viewBox="0 0 100 100" width="40" height="40">
+              <path d="M10 90 L30 10 L50 60 L70 10 L90 90" stroke="var(--accent-color)" strokeWidth="8" fill="none" />
             </svg>
-            <span className="cart-badge">{cart.length}</span>
+            <span>Gemini Store</span>
+          </div>
+          <div className="nav-menu">
+            <span>MEN</span>
+            <span>WOMEN</span>
+            <span>KIDS</span>
+            <span>HOME</span>
+            <span>BEAUTY</span>
+            <span>STUDIO</span>
+          </div>
+        </div>
+        
+        <div className="nav-center">
+          <div className="search-bar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+            <input 
+              type="text" 
+              placeholder="Search for products, brands and more" 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+        </div>
+
+        <div className="nav-right">
+          <div className="nav-action-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span>Satyam</span>
+          </div>
+          <div className="nav-action-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            <span>Wishlist</span>
+          </div>
+          <div className="nav-action-item nav-cart" onClick={() => setView('cart')}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            <span>Bag</span>
+            {cart.length > 0 && <span className="cart-badge">{cart.length}</span>}
           </div>
         </div>
       </nav>
@@ -695,28 +763,22 @@ function App() {
             <div className="modal-header-nav">
               <span className="breadcrumb">HOME / THE SHOP / {selectedProduct.category.toUpperCase()}</span>
               <div className="modal-prev-next">
-                <span>&lt; PREV</span>
-                <span>NEXT &gt;</span>
+                <span onClick={goToPrevProduct}>&lt; PREV</span>
+                <span onClick={goToNextProduct}>NEXT &gt;</span>
               </div>
             </div>
 
             <div className="modal-body-main">
               <div className="modal-gallery">
                 <div className="thumbnails">
-                  <div 
-                    className={`thumb ${activeImage === (selectedProduct.variantData[selectedColor]?.main || selectedProduct.image) ? 'active' : ''}`} 
-                    onClick={() => setActiveImage(selectedProduct.variantData[selectedColor]?.main || selectedProduct.image)}
-                  >
-                    <img src={selectedProduct.variantData[selectedColor]?.main || selectedProduct.image} alt="main" />
+                  <div className="thumb active">
+                    <img src={selectedProduct.image} alt="main" />
                   </div>
-                  {selectedProduct.variantData[selectedColor]?.gallery.map((img, i) => (
-                    <div key={i} className={`thumb ${activeImage === img ? 'active' : ''}`} onClick={() => setActiveImage(img)}>
-                      <img src={img} alt={`thumb-${i}`} />
-                    </div>
-                  ))}
                 </div>
                 <div className="main-modal-image">
-                  <img key={activeImage} src={activeImage} alt={selectedProduct.name} className="image-fade-in" />
+                  <button className="nav-arrow prev" onClick={goToPrevProduct}>&lt;</button>
+                  <img key={selectedProduct.id} src={selectedProduct.image} alt={selectedProduct.name} className="image-fade-in" />
+                  <button className="nav-arrow next" onClick={goToNextProduct}>&gt;</button>
                 </div>
               </div>
 
