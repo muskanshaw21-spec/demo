@@ -167,6 +167,17 @@ function App() {
   const [sortBy, setSortBy] = useState('Recommended');
   const [theme, setTheme] = useState('light'); // Default to light for Myntra look
   const [searchQuery, setSearchQuery] = useState('');
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [couponCode, setCouponCode] = useState('');
+  const [discount, setDiscount] = useState(0);
+  const [isTermsAccepted, setIsTermsAccepted] = useState(false);
+  const [couponError, setCouponError] = useState('');
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'light');
 
@@ -278,9 +289,25 @@ function App() {
   }
 
   const subtotal = cart.reduce((total, item) => total + (item.price * (item.qty || 1)), 0);
-  const gst = subtotal * 0.12;
+  const discountAmount = subtotal * discount;
+  const gst = (subtotal - discountAmount) * 0.12;
   const shipping = subtotal > 0 ? 99 : 0;
-  const total = subtotal + gst + shipping;
+  const total = subtotal - discountAmount + gst + shipping;
+
+  const applyCoupon = () => {
+    if (couponCode.toUpperCase() === 'GEMINI20') {
+      setDiscount(0.20);
+      setCouponError('');
+      alert('Coupon Applied! You saved 20%');
+    } else if (couponCode.toUpperCase() === 'WELCOME10') {
+      setDiscount(0.10);
+      setCouponError('');
+      alert('Coupon Applied! You saved 10%');
+    } else {
+      setCouponError('Invalid coupon code');
+      setDiscount(0);
+    }
+  };
 
   const renderStore = () => {
     const brands = [...new Set(dummyProducts.map(p => p.brand))];
@@ -509,27 +536,67 @@ function App() {
               <div className="bag-sidebar">
                 <div className="summary-box">
                   <h3>CART TOTALS</h3>
-                  <div className="summary-row">
-                    <span>SUBTOTAL</span>
-                    <span>₹{subtotal.toLocaleString('en-IN')}</span>
+                  
+                  <div className="coupon-section">
+                    <div className="coupon-input-wrapper">
+                      <input 
+                        type="text" 
+                        placeholder="Coupon Code" 
+                        value={couponCode}
+                        onChange={(e) => setCouponCode(e.target.value)}
+                      />
+                      <button onClick={applyCoupon}>APPLY</button>
+                    </div>
+                    {couponError && <p className="coupon-error">{couponError}</p>}
+                    {discount > 0 && <p className="coupon-success">Discount Applied: {discount * 100}% OFF</p>}
                   </div>
-                  <div className="summary-row">
-                    <span>GST (12%)</span>
-                    <span>₹{gst.toLocaleString('en-IN')}</span>
-                  </div>
-                  <div className="summary-row">
-                    <span>SHIPPING</span>
-                    <div className="shipping-info">
-                      <p>Flat rate: ₹{shipping.toLocaleString('en-IN')}</p>
-                      <p>Shipping to India</p>
-                      <button>CHANGE ADDRESS</button>
+
+                  <div className="summary-details">
+                    <div className="summary-row">
+                      <span>SUBTOTAL</span>
+                      <span>₹{subtotal.toLocaleString('en-IN')}</span>
+                    </div>
+                    {discount > 0 && (
+                      <div className="summary-row discount">
+                        <span>DISCOUNT ({discount * 100}%)</span>
+                        <span>- ₹{discountAmount.toLocaleString('en-IN')}</span>
+                      </div>
+                    )}
+                    <div className="summary-row">
+                      <span>GST (12%)</span>
+                      <span>₹{gst.toLocaleString('en-IN')}</span>
+                    </div>
+                    <div className="summary-row">
+                      <span>SHIPPING</span>
+                      <div className="shipping-info">
+                        <p>Flat rate: ₹{shipping.toLocaleString('en-IN')}</p>
+                        <p>Shipping to India</p>
+                        <button>CHANGE ADDRESS</button>
+                      </div>
+                    </div>
+                    <div className="summary-row total">
+                      <span>TOTAL</span>
+                      <span>₹{total.toLocaleString('en-IN')}</span>
                     </div>
                   </div>
-                  <div className="summary-row total">
-                    <span>TOTAL</span>
-                    <span>₹{total.toLocaleString('en-IN')}</span>
+
+                  <div className="terms-section">
+                    <label className="checkbox-container">
+                      <input 
+                        type="checkbox" 
+                        checked={isTermsAccepted} 
+                        onChange={(e) => setIsTermsAccepted(e.target.checked)}
+                      />
+                      <span className="checkmark"></span>
+                      I agree to the <a href="#">Terms & Conditions</a>
+                    </label>
                   </div>
-                  <button className="checkout-btn-large" onClick={() => setCheckoutStep(2)} disabled={cart.length === 0}>
+
+                  <button 
+                    className="checkout-btn-large" 
+                    onClick={() => setCheckoutStep(2)} 
+                    disabled={cart.length === 0 || !isTermsAccepted}
+                  >
                     PROCEED TO CHECKOUT
                   </button>
                 </div>
@@ -538,160 +605,145 @@ function App() {
           )}
 
           {checkoutStep === 2 && (
-            <div className="checkout-view">
+            <div className="checkout-view" style={{ animation: 'slideInRight 0.5s ease' }}>
               <div className="billing-details">
-                <h3>BILLING DETAILS</h3>
+                <div className="section-header">
+                  <h3>SHIPPING ADDRESS</h3>
+                  <p>Where should we send your order?</p>
+                </div>
                 <form className="billing-form">
                   <div className="form-row">
                     <div className="form-group">
                       <label>First Name *</label>
-                      <input type="text" placeholder="First Name" />
+                      <input type="text" placeholder="John" required />
                     </div>
                     <div className="form-group">
                       <label>Last Name *</label>
-                      <input type="text" placeholder="Last Name" />
+                      <input type="text" placeholder="Doe" required />
                     </div>
                   </div>
                   <div className="form-group">
-                    <label>Company Name (optional)</label>
-                    <input type="text" placeholder="Company Name (optional)" />
-                  </div>
-                  <div className="form-group">
-                    <label>Country / Region *</label>
-                    <select defaultValue="India">
-                      <option value="India">India</option>
-                      <option value="US">United States (US)</option>
-                    </select>
-                  </div>
-                  <div className="form-group">
                     <label>Street Address *</label>
-                    <input type="text" placeholder="House number and street name" />
-                    <input type="text" placeholder="Apartment, suite, unit, etc. (optional)" style={{marginTop: '10px'}} />
+                    <input type="text" placeholder="House number and street name" required />
+                    <input type="text" placeholder="Apartment, suite, unit, etc. (optional)" style={{marginTop: '15px'}} />
                   </div>
-                  <div className="form-group">
-                    <label>Town / City *</label>
-                    <input type="text" />
-                  </div>
-                  <div className="form-group">
-                    <label>State *</label>
-                    <select defaultValue="West Bengal">
-                      <option value="Andhra Pradesh">Andhra Pradesh</option>
-                      <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                      <option value="Assam">Assam</option>
-                      <option value="Bihar">Bihar</option>
-                      <option value="Chhattisgarh">Chhattisgarh</option>
-                      <option value="Goa">Goa</option>
-                      <option value="Gujarat">Gujarat</option>
-                      <option value="Haryana">Haryana</option>
-                      <option value="Himachal Pradesh">Himachal Pradesh</option>
-                      <option value="Jharkhand">Jharkhand</option>
-                      <option value="Karnataka">Karnataka</option>
-                      <option value="Kerala">Kerala</option>
-                      <option value="Madhya Pradesh">Madhya Pradesh</option>
-                      <option value="Maharashtra">Maharashtra</option>
-                      <option value="Manipur">Manipur</option>
-                      <option value="Meghalaya">Meghalaya</option>
-                      <option value="Mizoram">Mizoram</option>
-                      <option value="Nagaland">Nagaland</option>
-                      <option value="Odisha">Odisha</option>
-                      <option value="Punjab">Punjab</option>
-                      <option value="Rajasthan">Rajasthan</option>
-                      <option value="Sikkim">Sikkim</option>
-                      <option value="Tamil Nadu">Tamil Nadu</option>
-                      <option value="Telangana">Telangana</option>
-                      <option value="Tripura">Tripura</option>
-                      <option value="Uttar Pradesh">Uttar Pradesh</option>
-                      <option value="Uttarakhand">Uttarakhand</option>
-                      <option value="West Bengal">West Bengal</option>
-                      <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                      <option value="Chandigarh">Chandigarh</option>
-                      <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
-                      <option value="Delhi">Delhi</option>
-                      <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                      <option value="Ladakh">Ladakh</option>
-                      <option value="Lakshadweep">Lakshadweep</option>
-                      <option value="Puducherry">Puducherry</option>
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label>ZIP Code *</label>
-                    <input type="text" />
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label>Town / City *</label>
+                      <input type="text" placeholder="Mumbai" required />
+                    </div>
+                    <div className="form-group">
+                      <label>ZIP Code *</label>
+                      <input type="text" placeholder="400001" required />
+                    </div>
                   </div>
                   <div className="form-group">
                     <label>Phone *</label>
-                    <input type="tel" />
-                  </div>
-                  <div className="form-group">
-                    <label>Email Address *</label>
-                    <input type="email" />
+                    <input type="tel" placeholder="+91 98765 43210" required />
                   </div>
                 </form>
+
+                <div className="payment-section" style={{ marginTop: '3rem' }}>
+                  <div className="section-header">
+                    <h3>PAYMENT METHOD</h3>
+                    <p>Select your preferred way to pay</p>
+                  </div>
+                  <div className="payment-grid">
+                    <div className="payment-method-card active">
+                      <input type="radio" name="payment" id="card" defaultChecked />
+                      <label htmlFor="card">
+                        <div className="method-icon">💳</div>
+                        <div className="method-info">
+                          <span className="method-name">Credit / Debit Card</span>
+                          <span className="method-desc">Pay securely with your card</span>
+                        </div>
+                      </label>
+                    </div>
+                    <div className="payment-method-card">
+                      <input type="radio" name="payment" id="upi" />
+                      <label htmlFor="upi">
+                        <div className="method-icon">📱</div>
+                        <div className="method-info">
+                          <span className="method-name">UPI / NetBanking</span>
+                          <span className="method-desc">Instant transfer from bank</span>
+                        </div>
+                      </label>
+                    </div>
+                    <div className="payment-method-card">
+                      <input type="radio" name="payment" id="cod" />
+                      <label htmlFor="cod">
+                        <div className="method-icon">🚚</div>
+                        <div className="method-info">
+                          <span className="method-name">Cash on Delivery</span>
+                          <span className="method-desc">Pay when you receive</span>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="order-sidebar">
                 <div className="order-box">
-                  <h3>YOUR ORDER</h3>
-                  <div className="order-header">
-                    <span>PRODUCTS</span>
-                    <span>SUBTOTALS</span>
-                  </div>
+                  <h3>ORDER SUMMARY</h3>
                   <div className="order-items">
                     {cart.map(item => (
-                      <div key={item.cartId} className="order-item">
-                        <span>{item.name} x {item.qty || 1}</span>
-                        <span>₹{(item.price * (item.qty || 1)).toLocaleString('en-IN')}</span>
+                      <div key={item.cartId} className="order-item-mini">
+                        <img src={item.image} alt="" />
+                        <div className="mini-info">
+                          <span className="name">{item.name}</span>
+                          <span className="details">Qty: {item.qty} | {item.selectedSize}</span>
+                        </div>
+                        <span className="price">₹{(item.price * item.qty).toLocaleString('en-IN')}</span>
                       </div>
                     ))}
                   </div>
-                  <div className="order-row">
-                    <span>SUBTOTAL</span>
-                    <span>${subtotal.toFixed(2)}</span>
-                  </div>
-                  <div className="order-row">
-                    <span>GST (12%)</span>
-                    <span>₹{gst.toLocaleString('en-IN')}</span>
-                  </div>
-                  <div className="order-row">
-                    <span>SHIPPING</span>
-                    <span>Flat rate: ₹{shipping.toLocaleString('en-IN')}</span>
-                  </div>
-                  <div className="order-row total">
-                    <span>TOTAL</span>
-                    <span>₹{total.toLocaleString('en-IN')}</span>
-                  </div>
-                  <div className="payment-methods">
-                    <div className="method">
-                      <input type="radio" name="payment" id="bank" defaultChecked />
-                      <label htmlFor="bank">Direct bank transfer</label>
-                      <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference.</p>
+                  <div className="order-summary-details">
+                    <div className="order-row">
+                      <span>Order Value</span>
+                      <span>₹{subtotal.toLocaleString('en-IN')}</span>
                     </div>
-                    <div className="method">
-                      <input type="radio" name="payment" id="check" />
-                      <label htmlFor="check">Check payments</label>
+                    <div className="order-row">
+                      <span>GST & Duties</span>
+                      <span>₹{gst.toLocaleString('en-IN')}</span>
                     </div>
-                    <div className="method">
-                      <input type="radio" name="payment" id="cod" />
-                      <label htmlFor="cod">Cash on delivery</label>
+                    <div className="order-row">
+                      <span>Delivery Charges</span>
+                      <span className="free">FREE</span>
                     </div>
-                    <div className="method">
-                      <input type="radio" name="payment" id="paypal" />
-                      <label htmlFor="paypal">PayPal</label>
+                    <div className="order-row total">
+                      <span>Total Amount</span>
+                      <span>₹{total.toLocaleString('en-IN')}</span>
                     </div>
                   </div>
                   <button className="place-order-btn" onClick={() => setCheckoutStep(3)}>
-                    PLACE ORDER
+                    CONFIRM & PAY NOW
                   </button>
+                  <p className="secure-text">🔒 Secure 256-bit SSL Encrypted Payment</p>
                 </div>
               </div>
             </div>
           )}
 
           {checkoutStep === 3 && (
-            <div className="confirmation-view">
+            <div className="confirmation-view" style={{ animation: 'scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)' }}>
               <div className="conf-card">
-                <div className="success-icon">✓</div>
+                <div className="success-icon-wrapper">
+                  <div className="success-icon">✓</div>
+                  <div className="confetti-placeholder"></div>
+                </div>
                 <h2>Order Confirmed!</h2>
-                <p>Thank you for your purchase. Your order number is #GEM-{Math.floor(Math.random() * 100000)}</p>
+                <p>Your order <strong>#GEM-{Math.floor(Math.random() * 100000)}</strong> has been placed successfully. A confirmation email has been sent to your registered address.</p>
+                <div className="conf-details">
+                  <div className="detail-row">
+                    <span>Estimate Delivery</span>
+                    <span>{new Date(Date.now() + 5*24*60*60*1000).toLocaleDateString('en-IN', {day: 'numeric', month: 'short', year: 'numeric'})}</span>
+                  </div>
+                  <div className="detail-row">
+                    <span>Payment Status</span>
+                    <span className="success-badge">Paid Online</span>
+                  </div>
+                </div>
                 <button className="checkout-btn-large" onClick={() => { setView('store'); setCheckoutStep(1); setCart([]); }}>
                   CONTINUE SHOPPING
                 </button>
@@ -705,7 +757,7 @@ function App() {
 
   return (
     <div className={`app-container ${isCartOpen ? 'cart-open' : ''}`}>
-      <nav className="navbar myntra-nav">
+      <nav className={`navbar myntra-nav ${isScrolled ? 'scrolled' : ''}`}>
         <div className="nav-left">
           <div className="nav-logo" onClick={() => setView('store')}>
             <svg viewBox="0 0 100 100" width="40" height="40">
