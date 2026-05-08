@@ -172,6 +172,14 @@ function App() {
   const [discount, setDiscount] = useState(0);
   const [isTermsAccepted, setIsTermsAccepted] = useState(false);
   const [couponError, setCouponError] = useState('');
+  const [wishlist, setWishlist] = useState([]);
+  const [user, setUser] = useState({
+    name: 'Gemini User',
+    email: 'user@gemini.com',
+    memberSince: 'Oct 2023',
+    orders: 12,
+    avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop'
+  });
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -288,6 +296,97 @@ function App() {
     return <Login onLogin={() => setIsAuthenticated(true)} />;
   }
 
+  const toggleWishlist = (product) => {
+    setWishlist(prev => 
+      prev.find(p => p.id === product.id) 
+        ? prev.filter(p => p.id !== product.id)
+        : [...prev, product]
+    );
+  };
+
+  const renderProfile = () => (
+    <main className="main-content profile-view">
+      <div className="profile-container">
+        <div className="profile-sidebar">
+          <div className="user-info-card">
+            <img src={user.avatar} alt="avatar" className="profile-avatar" />
+            <h3>{user.name}</h3>
+            <p>{user.email}</p>
+          </div>
+          <nav className="profile-nav">
+            <button className="active">Overview</button>
+            <button onClick={() => setView('orders')}>Orders & Returns</button>
+            <button onClick={() => setView('wishlist')}>Wishlist</button>
+            <button>Coupons</button>
+            <button>Gemini Credit</button>
+            <button>Profile Details</button>
+            <button className="logout-btn" onClick={() => window.location.reload()}>Logout</button>
+          </nav>
+        </div>
+        <div className="profile-main">
+          <h2>Account Overview</h2>
+          <div className="overview-grid">
+            <div className="stat-card">
+              <span className="icon">📦</span>
+              <div className="stat-info">
+                <h4>{user.orders}</h4>
+                <p>Orders</p>
+              </div>
+            </div>
+            <div className="stat-card">
+              <span className="icon">❤️</span>
+              <div className="stat-info">
+                <h4>{wishlist.length}</h4>
+                <p>Wishlist Items</p>
+              </div>
+            </div>
+            <div className="stat-card">
+              <span className="icon">🎟️</span>
+              <div className="stat-info">
+                <h4>4</h4>
+                <p>Coupons</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+
+  const renderWishlist = () => (
+    <main className="main-content wishlist-view">
+      <div className="wishlist-header">
+        <h2>My Wishlist <span>({wishlist.length} items)</span></h2>
+      </div>
+      {wishlist.length === 0 ? (
+        <div className="empty-wishlist">
+          <img src="https://constant.myntassets.com/checkout/assets/img/empty-bag.webp" alt="empty" />
+          <h3>YOUR WISHLIST IS EMPTY</h3>
+          <p>Add items that you like to your wishlist. Review them anytime and easily move them to the bag.</p>
+          <button className="shop-now-btn" onClick={() => setView('store')}>CONTINUE SHOPPING</button>
+        </div>
+      ) : (
+        <div className="product-grid">
+          {wishlist.map(product => (
+            <div key={product.id} className="product-card">
+              <div className="card-image-wrapper">
+                <img src={product.image} alt={product.name} onClick={() => setSelectedProduct(product)} />
+                <button className="remove-wishlist" onClick={() => toggleWishlist(product)}>&times;</button>
+              </div>
+              <div className="card-content">
+                <h4 className="brand-name">{product.brand}</h4>
+                <h3 className="product-title">{product.name}</h3>
+                <div className="price-row">
+                  <span className="current-price">₹{product.price.toLocaleString('en-IN')}</span>
+                </div>
+                <button className="move-to-bag" onClick={() => addToCart(product)}>MOVE TO BAG</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </main>
+  );
   const subtotal = cart.reduce((total, item) => total + (item.price * (item.qty || 1)), 0);
   const discountAmount = subtotal * discount;
   const gst = (subtotal - discountAmount) * 0.12;
@@ -335,23 +434,37 @@ function App() {
 
     return (
       <main className="main-content store-view">
-        {/* Banner Section */}
-        <section className="promo-banners">
-          <div className="main-banner">
-            <img src="/promo_banner.png" alt="Get 25% Off" />
-          </div>
-          <div className="featured-banner">
-            <div className="featured-content">
-              <h2>U.S. POLO ASSN.</h2>
-              <p>Up To 50% Off</p>
-              <button className="explore-btn">+ Explore</button>
+        {/* Extra Small Aurora Fashion Coupon Ticker */}
+        <div className="aurora-ticker-mini">
+          <span>✨ CODE: <strong>AURORA25</strong> | EXTRA 25% OFF ✨</span>
+        </div>
+
+        {/* Myntra-style Category Circles */}
+        <section className="category-circles">
+          {['MEN', 'Women', 'KIDS', 'Electronics', 'Footwear', 'Home'].map(cat => (
+            <div key={cat} className="cat-circle-item" onClick={() => setActiveViewCategory(cat)}>
+              <div className="cat-circle-img">
+                <img src={`https://images.unsplash.com/photo-${cat === 'MEN' ? '1490114538077-0a7f8cb49891' : cat === 'Women' ? '1567401893414-76b7b1e5a7a5' : '1519238263530-99bdd11df2ea'}?w=200&q=80`} alt={cat} />
+              </div>
+              <span>{cat}</span>
             </div>
-            <img src="/featured_banner.png" alt="Featured Collection" />
+          ))}
+        </section>
+
+        {/* Dynamic Banners */}
+        <section className="promo-banners">
+          <div className="main-banner-carousel">
+            <img src="/promo_banner.png" alt="Flash Sale" />
+            <div className="banner-nav-dots">
+              <span className="dot active"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
+            </div>
           </div>
         </section>
 
         <div className="breadcrumb-nav">
-          <span>Home / <strong>Shop</strong></span>
+          <span>Home / <strong>Clothing</strong> / {activeViewCategory.toUpperCase()}</span>
         </div>
 
         <div className="store-layout">
@@ -365,10 +478,10 @@ function App() {
             <div className="filter-section">
               <h4>CATEGORIES</h4>
               <div className="filter-options">
-                {['all', 'MEN', 'Women', 'KIDS', 'Electronics', 'Footwear'].map(cat => (
+                {['MEN', 'Women', 'KIDS'].map(cat => (
                   <label key={cat} onClick={() => setActiveViewCategory(cat)}>
-                    <input type="radio" name="cat" checked={activeViewCategory === cat} readOnly /> 
-                    {cat === 'all' ? 'All Products' : cat}
+                    <input type="checkbox" checked={activeViewCategory === cat} readOnly /> 
+                    {cat}
                   </label>
                 ))}
               </div>
@@ -389,18 +502,16 @@ function App() {
             <div className="filter-section">
               <h4>PRICE</h4>
               <div className="filter-options">
-                <label onClick={() => setSelectedPriceRange('all')}>
-                  <input type="radio" name="price" checked={selectedPriceRange === 'all'} readOnly /> All Prices
-                </label>
-                <label onClick={() => setSelectedPriceRange('0-2000')}>
-                  <input type="radio" name="price" checked={selectedPriceRange === '0-2000'} readOnly /> Under ₹2000
-                </label>
-                <label onClick={() => setSelectedPriceRange('2000-5000')}>
-                  <input type="radio" name="price" checked={selectedPriceRange === '2000-5000'} readOnly /> ₹2000 - ₹5000
-                </label>
-                <label onClick={() => setSelectedPriceRange('5000-plus')}>
-                  <input type="radio" name="price" checked={selectedPriceRange === '5000-plus'} readOnly /> Over ₹5000
-                </label>
+                {[
+                  { label: 'Rs. 990 to Rs. 2000', val: '0-2000' },
+                  { label: 'Rs. 2000 to Rs. 5000', val: '2000-5000' },
+                  { label: 'Rs. 5000 and Above', val: '5000-plus' }
+                ].map(range => (
+                  <label key={range.val} onClick={() => setSelectedPriceRange(range.val)}>
+                    <input type="radio" name="price" checked={selectedPriceRange === range.val} readOnly /> 
+                    {range.label}
+                  </label>
+                ))}
               </div>
             </div>
           </aside>
@@ -408,25 +519,31 @@ function App() {
           {/* Main Grid Area */}
           <section className="products-area">
             <div className="top-bar">
-              <div className="item-count">
-                <strong>{filteredProducts.length}</strong> items found
-              </div>
               <div className="sort-by">
                 <span>Sort by:</span>
-                <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                  <option>Recommended</option>
-                  <option>Price: Low to High</option>
-                  <option>Price: High to Low</option>
-                  <option>Customer Rating</option>
-                </select>
+                <div className="custom-select">
+                  <strong>{sortBy}</strong>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M6 9l6 6 6-6"></path></svg>
+                  <div className="select-dropdown">
+                    {['Recommended', 'Price: Low to High', 'Price: High to Low', 'Customer Rating'].map(s => (
+                      <div key={s} onClick={() => setSortBy(s)}>{s}</div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
 
             <div className="product-grid">
               {filteredProducts.map((product, index) => (
-                <div key={product.id} className="product-card" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <div className="card-image-wrapper" onClick={() => setSelectedProduct(product)}>
-                    <img src={product.image} alt={product.name} className="product-image" />
+                <div key={product.id} className="product-card" style={{ animationDelay: `${index * 0.05}s` }}>
+                  <div className="card-image-wrapper">
+                    <img src={product.image} alt={product.name} className="product-image" onClick={() => setSelectedProduct(product)} />
+                    <button 
+                      className={`wishlist-icon-btn ${wishlist.find(p => p.id === product.id) ? 'active' : ''}`}
+                      onClick={(e) => { e.stopPropagation(); toggleWishlist(product); }}
+                    >
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill={wishlist.find(p => p.id === product.id) ? '#ff3f6c' : 'none'} stroke={wishlist.find(p => p.id === product.id) ? '#ff3f6c' : 'currentColor'} strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
                     <div className="rating-badge">
                       <span>{product.rating} ★ | {product.reviews}</span>
                     </div>
@@ -454,7 +571,13 @@ function App() {
   const renderCart = () => (
     <div className="cart-page">
       <div className="cart-container">
-        <h1 className="cart-page-title">CART</h1>
+        <div className="cart-page-header">
+          <button className="back-btn" onClick={() => setView('store')}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M19 12H5M5 12L12 19M5 12L12 5"></path></svg>
+            BACK TO STORE
+          </button>
+          <h1 className="cart-page-title">CHECKOUT</h1>
+        </div>
         
         <div className="checkout-steps">
           <div className={`step ${checkoutStep >= 1 ? 'active' : ''}`} onClick={() => setCheckoutStep(1)}>
@@ -788,11 +911,11 @@ function App() {
         </div>
 
         <div className="nav-right">
-          <div className="nav-action-item">
+          <div className="nav-action-item" onClick={() => setView('profile')}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             <span>Satyam</span>
           </div>
-          <div className="nav-action-item">
+          <div className="nav-action-item" onClick={() => setView('wishlist')}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
             <span>Wishlist</span>
           </div>
@@ -804,13 +927,22 @@ function App() {
         </div>
       </nav>
 
-      {view === 'store' ? renderStore() : renderCart()}
+        {view === 'store' && renderStore()}
+        {view === 'cart' && renderCart()}
+        {view === 'profile' && renderProfile()}
+        {view === 'wishlist' && renderWishlist()}
 
       {/* Product Details Modal */}
       {selectedProduct && (
         <div className="modal-overlay" onClick={() => setSelectedProduct(null)}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <button className="close-modal" onClick={() => setSelectedProduct(null)}>&times;</button>
+            <div className="modal-top-bar">
+              <button className="modal-back-btn" onClick={() => setSelectedProduct(null)}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M19 12H5M5 12L12 19M5 12L12 5"></path></svg>
+                BACK
+              </button>
+              <button className="close-modal-icon" onClick={() => setSelectedProduct(null)}>&times;</button>
+            </div>
             
             <div className="modal-header-nav">
               <span className="breadcrumb">HOME / THE SHOP / {selectedProduct.category.toUpperCase()}</span>
@@ -826,29 +958,48 @@ function App() {
                   <div className="thumb active">
                     <img src={selectedProduct.image} alt="main" />
                   </div>
+                  <div className="thumb">
+                    <img src={selectedProduct.image} alt="side" style={{filter: 'hue-rotate(45deg)'}} />
+                  </div>
                 </div>
                 <div className="main-modal-image">
                   <button className="nav-arrow prev" onClick={goToPrevProduct}>&lt;</button>
                   <img key={selectedProduct.id} src={selectedProduct.image} alt={selectedProduct.name} className="image-fade-in" />
                   <button className="nav-arrow next" onClick={goToNextProduct}>&gt;</button>
+                  <div className="image-zoom-hint">Roll over image to zoom</div>
                 </div>
               </div>
 
               <div className="modal-info">
+                <div className="modal-brand-row">
+                  <h4 className="modal-brand-name">{selectedProduct.brand}</h4>
+                  <span className="new-tag">NEW SEASON</span>
+                </div>
                 <h2 className="modal-title">{selectedProduct.name}</h2>
-                <div className="modal-rating">
+                
+                <div className="modal-rating-row">
                   <div className="stars">
                     {[1, 2, 3, 4, 5].map(s => (
                       <span key={s} className={s <= Math.round(selectedProduct.rating) ? 'star filled' : 'star'}>★</span>
                     ))}
+                    <strong>{selectedProduct.rating}</strong>
                   </div>
-                  <span className="review-count">{selectedProduct.reviews} reviews</span>
+                  <span className="divider">|</span>
+                  <span className="review-count">{selectedProduct.reviews} Verified Reviews</span>
                 </div>
-                <p className="modal-price">₹{(selectedProduct.sizePricing?.[selectedSize] || selectedProduct.price).toLocaleString('en-IN')}</p>
-                <p className="modal-description-short">{selectedProduct.description.substring(0, 120)}...</p>
-                
+
+                <div className="modal-price-row">
+                  <span className="modal-current-price">₹{(selectedProduct.sizePricing?.[selectedSize] || selectedProduct.price).toLocaleString('en-IN')}</span>
+                  <span className="modal-mrp">MRP <span className="strikethrough">₹{(selectedProduct.originalPrice || selectedProduct.price + 1000).toLocaleString('en-IN')}</span></span>
+                  <span className="modal-discount-tag">(25% OFF)</span>
+                </div>
+                <p className="inclusive-taxes">inclusive of all taxes</p>
+
                 <div className="selection-group">
-                  <h4>SIZES</h4>
+                  <div className="selection-header">
+                    <h4>SELECT SIZE</h4>
+                    <span className="size-chart-link">SIZE CHART 📐</span>
+                  </div>
                   <div className="size-picker">
                     {selectedProduct.sizes.map(size => (
                       <button 
@@ -893,9 +1044,21 @@ function App() {
                 </div>
 
                 <div className="utility-buttons">
-                  <button className="util-btn">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78v0z"></path></svg>
-                    ADD TO WISHLIST
+                  <button 
+                    className={`util-btn ${wishlist.find(p => p.id === selectedProduct.id) ? 'active' : ''}`}
+                    onClick={() => toggleWishlist(selectedProduct)}
+                  >
+                    <svg 
+                      width="20" 
+                      height="20" 
+                      fill={wishlist.find(p => p.id === selectedProduct.id) ? '#ff3f6c' : 'none'} 
+                      stroke={wishlist.find(p => p.id === selectedProduct.id) ? '#ff3f6c' : 'currentColor'} 
+                      strokeWidth="2" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78v0z"></path>
+                    </svg>
+                    {wishlist.find(p => p.id === selectedProduct.id) ? 'WISHLISTED' : 'ADD TO WISHLIST'}
                   </button>
                   <button className="util-btn">
                     <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8m-4-6l-4-4-4 4m4-4v13"></path></svg>
