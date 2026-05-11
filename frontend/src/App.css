@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
 .app-container {
   min-height: 100vh;
   display: flex;
@@ -164,89 +166,185 @@
   width: 100%;
 }
 
-/* Myntra-style Category Circles */
-.category-circles {
+
+
+/* New Aurora Banner Styles */
+.aurora-banner {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto 3rem;
+  height: 400px;
+  background-image: url('/aurora_banner_bg.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
   display: flex;
-  justify-content: center;
-  gap: 2.5rem;
-  margin-bottom: 3rem;
-  padding: 1rem 0;
-  overflow-x: auto;
+  align-items: center;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 1s ease-out;
 }
 
-.cat-circle-item {
+.aurora-banner-content {
+  width: 100%;
+  padding: 0 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.aurora-left-side {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.aurora-logo-banner {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.aurora-logo-main {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #3d3d3d;
+}
+
+.aurora-logo-sub {
+  font-size: 0.8rem;
+  letter-spacing: 6px;
+  font-weight: 500;
+  color: #666;
+  padding-left: 2px;
+}
+
+.aurora-main-text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  font-weight: 600;
+  color: #a67c7c;
+  margin: 0;
+  line-height: 1;
+}
+
+.aurora-decorative-line {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 10px 0;
+}
+
+.aurora-decorative-line .line {
+  height: 1px;
+  width: 100px;
+  background: #d4b5b5;
+}
+
+.aurora-decorative-line .diamond {
+  color: #d4b5b5;
+  font-size: 0.8rem;
+}
+
+.aurora-main-text p {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.8rem;
+  color: #4a4a4a;
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.aurora-right-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.aurora-coupon-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
 }
 
-.cat-circle-item:hover {
-  transform: translateY(-5px);
+.on-your-order {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #3d3d3d;
 }
 
-.cat-circle-img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
-}
-
-.cat-circle-item:hover .cat-circle-img {
-  border-color: #ff3f6c;
-}
-
-.cat-circle-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.cat-circle-item span {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #282c3f;
-}
-
-/* Myntra-style Banners */
-.main-banner-carousel {
-  width: 100%;
-  position: relative;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 2rem;
-}
-
-.main-banner-carousel img {
-  width: 100%;
-  display: block;
-}
-
-.banner-nav-dots {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
+.coupon-box {
+  border: 2px solid #e8c6c6;
+  padding: 1.5rem 2.5rem;
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(5px);
+  position: relative;
 }
 
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
+.coupon-box::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid #e8c6c6;
+  pointer-events: none;
+}
+
+.coupon-label {
+  font-size: 1.2rem;
+  color: #4a4a4a;
+  margin-bottom: 5px;
+}
+
+.coupon-code {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #3d3d3d;
+  letter-spacing: 1px;
+}
+
+.aurora-shop-btn {
+  background: #a67c7c;
+  color: white;
+  border: none;
+  padding: 0.8rem 2.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 2px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(166, 124, 124, 0.3);
 }
 
-.dot.active {
-  background: white;
-  width: 20px;
-  border-radius: 10px;
+.aurora-shop-btn:hover {
+  background: #8e6868;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(166, 124, 124, 0.4);
+}
+
+@media (max-width: 1024px) {
+  .aurora-main-text h1 { font-size: 3.5rem; }
+  .aurora-main-text p { font-size: 1.4rem; }
+  .coupon-code { font-size: 1.5rem; }
+}
+
+@media (max-width: 768px) {
+  .aurora-banner { height: auto; padding: 3rem 0; }
+  .aurora-banner-content { flex-direction: column; gap: 3rem; text-align: center; }
+  .aurora-decorative-line { justify-content: center; }
+  .aurora-logo-banner { align-items: center; }
 }
 
 /* Myntra-style Store Layout */
@@ -1774,8 +1872,6 @@
   letter-spacing: 0.5px;
 }
 
-}
-
 .success-icon-wrapper {
   position: relative;
   margin-bottom: 2.5rem;
@@ -1928,6 +2024,11 @@
 }
 
 .checkbox-container a {
+  color: #ff3f6c;
+  text-decoration: none;
+  font-weight: 600;
+}
+
 /* Custom Select & Sort */
 .custom-select {
   position: relative;
@@ -1999,8 +2100,6 @@
   font-weight: 800;
   font-size: 1.5rem;
   margin: 1.5rem 0;
-}
-
 }
 
 /* Aurora Fashion Ticker */
@@ -2111,19 +2210,17 @@
   cursor: pointer;
 }
 
-}
-
 /* Aurora Ticker Mini */
 .aurora-ticker-mini {
-  background: #fff5f7;
   color: #ff3f6c;
-  padding: 5px 0;
+  padding: 8px 0;
   text-align: center;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.5px;
-  border-bottom: 1px solid #ffe8ef;
-  margin-bottom: 1.5rem;
+  margin: 0 auto 0.5rem;
+  width: 100%;
+  max-width: 850px;
 }
 
 /* Wishlist Icon Button */
@@ -2317,6 +2414,9 @@
 }
 
 .move-to-bag:hover {
+  background: #fff5f7;
+}
+
 .util-btn.active {
   color: #ff3f6c;
   border-color: #ff3f6c;

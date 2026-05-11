@@ -436,29 +436,39 @@ function App() {
       <main className="main-content store-view">
         {/* Extra Small Aurora Fashion Coupon Ticker */}
         <div className="aurora-ticker-mini">
-          <span>✨ CODE: <strong>AURORA25</strong> | EXTRA 25% OFF ✨</span>
+          <span>✨ CODE: <strong>GEMINISAVE</strong> | EXTRA 25% OFF ✨</span>
         </div>
 
-        {/* Myntra-style Category Circles */}
-        <section className="category-circles">
-          {['MEN', 'Women', 'KIDS', 'Electronics', 'Footwear', 'Home'].map(cat => (
-            <div key={cat} className="cat-circle-item" onClick={() => setActiveViewCategory(cat)}>
-              <div className="cat-circle-img">
-                <img src={`https://images.unsplash.com/photo-${cat === 'MEN' ? '1490114538077-0a7f8cb49891' : cat === 'Women' ? '1567401893414-76b7b1e5a7a5' : '1519238263530-99bdd11df2ea'}?w=200&q=80`} alt={cat} />
-              </div>
-              <span>{cat}</span>
-            </div>
-          ))}
-        </section>
 
-        {/* Dynamic Banners */}
-        <section className="promo-banners">
-          <div className="main-banner-carousel">
-            <img src="/promo_banner.png" alt="Flash Sale" />
-            <div className="banner-nav-dots">
-              <span className="dot active"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
+
+        {/* New Aurora Fashion Banner */}
+        <section className="aurora-banner">
+          <div className="aurora-banner-content">
+            <div className="aurora-left-side">
+              <div className="aurora-logo-banner">
+                <span className="aurora-logo-main">AURORA</span>
+                <span className="aurora-logo-sub">FASHION</span>
+              </div>
+              <div className="aurora-main-text">
+                <h1>Get 25% Off</h1>
+                <div className="aurora-decorative-line">
+                  <span className="line"></span>
+                  <span className="diamond">◆</span>
+                  <span className="line"></span>
+                </div>
+                <p>All Fashion Collections</p>
+              </div>
+            </div>
+            
+            <div className="aurora-right-side">
+              <div className="aurora-coupon-container">
+                <span className="on-your-order">ON YOUR ORDER</span>
+                <div className="coupon-box">
+                  <span className="coupon-label">Coupon Code:</span>
+                  <span className="coupon-code">GEMINISAVE</span>
+                </div>
+              </div>
+              <button className="aurora-shop-btn">SHOP NOW</button>
             </div>
           </div>
         </section>
